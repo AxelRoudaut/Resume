@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "pre-commit: run all files",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/pre-commit",
+      "args": [
+        "run",
+        "--all-files"
+      ],
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ]
+}

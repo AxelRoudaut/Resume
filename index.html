@@ -1,299 +1,322 @@
-<!DOCTYPE html>
-<html lang="us">                                                                                     
-   
-	<head>      
-		<meta charset="utf-8" />    
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		   <title> Axel Roudaut Resume </title>
-		
-		<!-- Material Design Lite -->
-		<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-deep_orange.min.css" />
-		<!-- Material Design icon font -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Lobster|Raleway|Sansita|Montserrat:400,700" rel="stylesheet">
-		<!-- jquery -->
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<!-- My CSS -->
-		<link rel="stylesheet" href="css/style.css">
-	</head>
-  
-	<body id="test12">
-		
-		<!-- Wide card with share menu button -->
-		<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-		
-			<!-- Banner -->
-			<div class="banner-background" id="banner">
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="bhome" href="#home"> Home </a></li>
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#profile"> Profile </a></li>
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#education"> Education </a></li>
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#skills"> Skills </a></li>
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#experience"> Experiences </a></li>
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#interests"> Interests </a></li>
-				<li><a class="banner-text nounderline mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#contact"> Contacts </a></li>
-			</div>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Axel Roudaut — DevOps &amp; Data Engineer in Cybersecurity</title>
+	<meta name="description" content="Axel Roudaut, DevOps and Data Engineer specializing in Cybersecurity. 7+ years designing and operating secure distributed infrastructures." />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
 
-			<!-- Banner button -->
-			<div class="mdl-card__menu button_position">
-				<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent button-margin">
-					<div id="tt1" class="icon material-icons change-color">archive</div>
-					<div class="mdl-tooltip" data-mdl-for="tt1">
-						Download <strong>file.zip</strong>
-					</div>
-				</button>
-				
-				<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-button--accent button-margin">
-					<i id="tt2" class="material-icons change-color">mail</i>
-					<div class="mdl-tooltip" data-mdl-for="tt2">axel.roudaut@outlook.com</div>
-				</button>
-				
-				<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-button--accent button-margin">
-				  <i id= "tt3" class="material-icons change-color">phone</i>
-				  <div class="mdl-tooltip" data-mdl-for="tt3">+33 6 29 76 33 91</div>
-				</button>
-			</div>
-			
-			<!-- Home -->
-			<div class="mdl-card__wide mdl-card--borde" id="home">
-				<div id="imageonly">
-					<ul class="mdl-card__title centrage">
-						<h1 class="titre-home"> I'm Axel Roudaut.</h1> 
-						<h2 class="comment-home">Let's start scrolling and learn more about me.</h2>
-						<img class="image-home" src="images/DSC_0159_1-004.JPG" alt="image profil" />
-						</br>
-						<a class="expand-background nounderline mdl-button mdl-button--icon mdl-js-button" href="#profile">
-							<div class="expand-icon material-icons ">expand_more</div>
-						</a>
-					</ul>
+	<header class="nav">
+		<a class="nav__brand" href="#home">Axel Roudaut</a>
+		<button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+			<span></span><span></span><span></span>
+		</button>
+		<nav class="nav__links" id="nav-links">
+			<a href="#about">About</a>
+			<a href="#experience">Experience</a>
+			<a href="#education">Education</a>
+			<a href="#skills">Skills</a>
+			<a href="#contact">Contact</a>
+		</nav>
+	</header>
+
+	<main>
+
+		<!-- Hero -->
+		<section id="home" class="hero">
+			<div class="hero__content">
+				<img class="hero__photo" src="images/profile-2026.jpeg" alt="Portrait of Axel Roudaut" />
+				<h1 class="hero__title">Axel Roudaut</h1>
+				<p class="hero__subtitle">DevOps &amp; Data Engineer in Cybersecurity</p>
+				<p class="hero__location">Montpellier, France</p>
+				<p class="hero__summary">
+					7+ years designing and operating secure distributed infrastructures for organizations
+					such as Thales and the French Ministry of Defense. Experienced in CI/CD automation,
+					service orchestration, and large-scale data platform deployment. Seeking DevOps,
+					Platform Engineering, or Data Engineering opportunities in Montpellier starting
+					September 2026.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href="ROUDAUT_Axel_CV_EN_2026.pdf" download>
+						<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+						Download CV
+					</a>
+					<a class="btn btn--ghost" href="https://www.linkedin.com/in/axel-roudaut-90557473/" target="_blank" rel="noopener">
+						<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.83v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.07 0 4.82 2.68 4.82 6.16V23h-4v-6.94c0-1.66-.03-3.79-2.31-3.79-2.32 0-2.67 1.81-2.67 3.68V23h-4V8z"/></svg>
+						LinkedIn
+					</a>
+					<a class="btn btn--ghost" href="https://github.com/Alexclusive" target="_blank" rel="noopener">
+						<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.26 5.69.41.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.2.66.79.55C20.71 21.39 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+						GitHub
+					</a>
 				</div>
 			</div>
-		  
-			<!-- Profile -->
-			<div class="mdl-card__supporting-text mdl-card--border" id="profile">
-				<div class="title1"> Profile </div>
-				21-year old French student in last year in Telecoms & Networks at ENSEEIHT (INP-Toulouse) looking for a 6-month internship in Information Systems Security.</br> 
-				I have done an academic exchange semestre at DCU, Ireland in Security & Cloud Computing (Big Data) and a 3-months internship at Altair in DevOps and Cloud HPC.</br>
-				Currently finishing my engineer degree specliazing it to Information Systems Security with a doble degree (Master in Telecoms ans Networks major Cybersecurity. </br>
-				I am interested in the following sectors : </br>
-				<span class="marge">- Systems & Apps Security</span></br>
-				<span class="marge">- Web & Network Security</span></br>
-				<span class="marge">- Cloud architectures & DevOps</span></br>
-				<span class="marge">- Big Data and IOT technologies</span></br>
-			</br>
-			</div>
-		  
-			<!-- Education & Trainings -->
-			<div class="mdl-card__supporting-text mdl-card--border" id="education">
-				<div class="title1"> Education & Trainings </div>
-				
-				<span class="title2"> 
-					TLS - SEC @ INP - ENSEEIHT, Toulouse France
-					<a href="https://tls-sec.github.io/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add </i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">September 2017 - Present</span></br>
-				<span >Doble degree with the University of Toulouse on Telecoms and Networks with the major Cybersecurity.
-				TLS-SEC is The training about Information Systems Security in Toulouse.</span></br>
-				
-				</br>
-				<span class="title2"> 
-					Telecoms & Réseaux @ INP - ENSEEIHT, Toulouse France 
-					<a href="http://www.enseeiht.fr/fr/formation/formation-ingenieur-1/etudiant/tr-telecommunications-et-reseaux.html" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">September 2015 - Present</span></br>
-				<span >A ‘‘Grande Ecole’’ Institute of Engineering in Electrical 
-				engineering, Automation, Electronics, Computer Science, Applied Mathematics, 
-				Hydraulics & Telecommunications)</span></br>
-				
-				</br>
-				<span class="title2"> Security & Cloud @ DCU, Dublin Ireland 
-					<a href="http://www.computing.dcu.ie/postgraduate/mcm/msc-computing-mcm" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">January 2017 – May 2017</span></br>
-				<span >M.Sc. in Computing.
-					Academic exchange semester with the Erasmus’ program
-				</span></br>
+			<a class="hero__scroll" href="#about" aria-label="Scroll to About">
+				<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+			</a>
+		</section>
 
-				</br>
-				<span class="title2"> CPGE PSI @ MICHELET, Vanves France 
-					<a href="http://www.cite-scolaire-michelet-vanves.ac-versailles.fr/classes-preparatoires/prepas-scientifiques-pcsi/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">September 2013 – July 2015</span></br>
-				<span >Preparatory classes for the “Grandes Ecoles” (CPGE)
-				Speciality in Physic and Engineering Sciences (PSI)
-				</span></br>
-				
-				</br>
-				<span class="title2"> BACCALAUREATE @ LAKANAL, Sceaux France 
-				  <a href="http://www.lyc-lakanal-sceaux.ac-versailles.fr/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 marge">July 2013</span></br>
-				<span >Scientific “Baccalaureate” (French national secondary degree or High School diploma)
-				in Mathematics and Engineering Sciences (SI) with honours.
-				</span></br>
-			</br>	
+		<!-- About -->
+		<section id="about" class="section">
+			<h2 class="section__title">About</h2>
+			<div class="about">
+				<div class="about__item">
+					<span class="about__label">Status</span>
+					<span>DevOps &amp; Data Engineer in Cybersecurity</span>
+				</div>
+				<div class="about__item">
+					<span class="about__label">Interests</span>
+					<span>Data Processing, Automation, Development, System Administration</span>
+				</div>
+				<div class="about__item">
+					<span class="about__label">Certificates</span>
+					<span>Engineer degree + Cybersecurity Master degree &middot; Driving license</span>
+				</div>
+				<div class="about__item">
+					<span class="about__label">Hobbies</span>
+					<span>Climbing, Motorbike, Skate, Surf, Running, Guitar</span>
+				</div>
 			</div>
-			
-			<!-- Employment Experience -->
-			<div class="mdl-card__supporting-text mdl-card--border" id="experience">
-				<div class="title1"> Employment Experience </div>
+		</section>
 
-				<span class="title2"> 
-					ALAIR - PBS Cloud @ Antony 92 France
-					<a href="http://pbscloud.io/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">June 2016 – July 2016</span></br>
-				<span>Python DevOps - Cloud HPC </br>
-				Take part in the development of the PBS Cloud platform for the automation of the HPC application's deployment above public Clouds, through Python 
-				language computing and the use of SaltStack, </br> Mistral, Docker-Compose and Kubernetes. </br>
-				Creation and development of bootstrapper between Altair PBS Cloud and Google Compute Engine.</span></br>
-				
-				</br>
-				<span class="title2"> 
-					WWOOF USA @ Chicago IL, USA
-					<a href="https://wwoofusa.org/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">June 2016 – July 2016</span></br>
-				<span >A one month internship whith the World-Wide Opportunities on Organic Farms’e program which allows me to
-				improve a lot my English communication skills and also to discover </br> a whole different world (agriculture) far away
-				from the computing felds in order to be more open-minded.</span></br>
-				
-				</br>
-				<span class="title2"> CEA @ Fontenay-aux-Roses 92 France
-				  <a href="http://fontenay-aux-roses.cea.fr/far" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span class="title3 ">May 2010</span></br>
-				<span >A one week on-the-job training during high-school at the CEA (French Alternative Energies 
-				and Atomic Energy Commission), Fontenay-aux-Roses, where I get a deep interest </br> in the engineering 
-				and computing fields.
-				</span></br>
-			</br>	
-			</div>
-		  
-			
-			<!-- Core Skills -->
-			<div class="mdl-card__supporting-text mdl-card--border" id="skills">
-				<div class="title1"> Core Skills </div>
-			
-				<span class="title2"> Computing
-				</span></br>
-				<span >Python, C, Java, JEE with Jboss, HTML/CSS, JS<span></br>
-				
-				</br>
-				<span class="title2"> Security
-				</span></br>
-				<span >gdb, ida, r2, ...</span></br>
-				
-				</br>
-				<span class="title2"> Networks
-				</span></br>
-				<span >TCP, IP, Ethernet, CSMA (Wifi), ATM, X25, FR, SDH</span></br>
-				
-				</br>
-				<span class="title2"> Languages
-				</span></br>
-				<span >Native French, C1 English and B1/C2 Spanish</span></br>
-				
-				</br>
-				<span class="title2"> Utility
-				</span></br>
-				<span >Manual Driving License</span></br>
-			</br>
-			</div>
-			
-			<!-- Interests -->
-			<div class="mdl-card__supporting-text mdl-card--border" id="interests">
-				<div class="title1"> Interests</div>
-				
-				<span class="title2"> Association
-				  <a href="http://www.bde.enseeiht.fr/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span >Member of the student association at ENSEEIHT 
-				</br> Member of the computing club</span></br>
-			
-				</br>
-				<span class="title2"> Sports
-				</span></br>
-				<span > Basketball, Rock-Climbing, Volleyball, Tennis, , Judo<span></br>
-				
-				</br>
-				<span class="title2"> Music
-				</span></br>
-				<span >Guitar(acoustic and electric), Drums(self-education)</span></br>
-				
-				</br>
-				<span class="title2"> Travelling
-				</span></br>
-				<span >Thailand, England, Cuba, Spain, USA, Ireland </span></br>
-			</br>
-			</div>
-			
-			<!-- Contact -->
-			<div class="mdl-card__supporting-text mdl-card--border" id="contact">
-				<div class="title1"> Contacts</div>
-				
-				<span class="title2"> Mail
-				</span></br>
-				<span > axel.roudaut@outlook.com<span></br>
-				
-				</br>
-				<span class="title2"> Phone
-				</span></br>
-				<span >(+33) 06 29 76 33 91</span></br>
+		<!-- Experience -->
+		<section id="experience" class="section">
+			<h2 class="section__title">Experience</h2>
+			<div class="timeline">
 
-				</br>
-				<span class="title2"> Linkdin
-				  <a href="https://www.linkedin.com/in/axel-roudaut-90557473/" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span >Axel Roudaut</span></br>
-				
-				</br>
-				<span class="title2"> GitHub
-				  <a href="https://github.com/Alexclusive" target="_blank">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-button--accent mdl-js-ripple-effect icon_position">
-						<i class="material-icons">add</i>
-					</button></a>
-				</span></br>
-				<span >Alexclusive</span></br>
-				
-			</br>
-			</div>
-			
-		</div>
-	</body>
-	
-	<!-- SmoothScroll -->
-	<script type="text/javascript" src="js/smoothscroll.js"></script>
+				<article class="entry">
+					<div class="entry__date">Feb 2022 — Now</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Cybersecurity DevOps Engineer</h3>
+						<div class="entry__org">Thales — Rennes</div>
+						<ul class="entry__bullets">
+							<li>
+								Designed, deployed, and operated Kubernetes-based infrastructure platforms.
+								<div class="tags">
+									<span class="tag-label">Orchestration &amp; Platform Engineering</span>
+									<span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">Docker</span><span class="tag">Ansible</span><span class="tag">Python</span>
+								</div>
+							</li>
+							<li>
+								Built and maintained Linux/Windows environments for offensive security scenarios.
+								<div class="tags">
+									<span class="tag-label">Infrastructure as Code</span>
+									<span class="tag">VMWare API</span><span class="tag">Packer</span><span class="tag">Ansible</span><span class="tag">Terraform</span><span class="tag">PowerShell</span>
+								</div>
+							</li>
+							<li>
+								Improved software delivery efficiency through CI/CD pipeline automation.
+								<div class="tags">
+									<span class="tag-label">DevOps Automation</span>
+									<span class="tag">GitLab CI</span><span class="tag">Docker</span><span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Bash</span><span class="tag">PowerShell</span>
+								</div>
+							</li>
+							<li>
+								Designed and implemented infrastructure monitoring and observability solutions.
+								<div class="tags">
+									<span class="tag-label">Observability &amp; Reliability</span>
+									<span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Docker</span><span class="tag">Ansible</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</article>
 
+				<article class="entry">
+					<div class="entry__date">Feb 2019 — Feb 2022</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Cyberdefense Data Engineer</h3>
+						<div class="entry__org">Ministry of Defense — Paris</div>
+						<ul class="entry__bullets">
+							<li>
+								Architected and deployed a Security Information and Event Management (SIEM) system.
+								<div class="tags">
+									<span class="tag-label">Security Monitoring</span>
+									<span class="tag">Suricata</span><span class="tag">Auditd</span><span class="tag">OSSEC</span><span class="tag">Windows Security</span><span class="tag">Sysmon</span><span class="tag">SIGMA</span>
+								</div>
+							</li>
+							<li>
+								Developed and deployed real-time data processing pipelines for streaming workloads.
+								<div class="tags">
+									<span class="tag-label">Big Data Processing Stack</span>
+									<span class="tag">Elasticsearch</span><span class="tag">Kafka</span><span class="tag">KsqlDB</span><span class="tag">Apache Spark</span><span class="tag">HDFS</span>
+								</div>
+							</li>
+							<li>
+								Automated infrastructure provisioning and monitoring across distributed environments.
+								<div class="tags">
+									<span class="tag-label">Infrastructure Automation &amp; Reliability</span>
+									<span class="tag">Docker</span><span class="tag">Ansible</span><span class="tag">GitLab</span><span class="tag">Prometheus</span><span class="tag">Grafana</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="entry">
+					<div class="entry__date">Mar 2018 — Sep 2018</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Internship — Hardware Cybersecurity Auditing</h3>
+						<div class="entry__org">Trusted Labs — Meudon</div>
+						<ul class="entry__bullets">
+							<li>
+								Conducted electronic side-channel attack research on embedded systems.
+								<div class="tags">
+									<span class="tag-label">Embedded Security</span>
+									<span class="tag">Python</span><span class="tag">Oscilloscope</span><span class="tag">Electronics</span>
+								</div>
+							</li>
+							<li>
+								Performed fault injection attacks on the Android kernel via clock signal manipulation.
+								<div class="tags">
+									<span class="tag-label">Low-Level System Exploitation</span>
+									<span class="tag">CLKSCREW attack</span><span class="tag">Bash</span><span class="tag">Android</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="entry">
+					<div class="entry__date">Jun 2017 — Aug 2017</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Internship — Cloud Integration Engineer</h3>
+						<div class="entry__org">Altair — Antony</div>
+						<ul class="entry__bullets">
+							<li>
+								Implemented a Python connector enabling cloud integration for HPC applications.
+								<div class="tags">
+									<span class="tag-label">Cloud Platform Engineering</span>
+									<span class="tag">Python</span><span class="tag">CI/CD</span><span class="tag">Jenkins</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span><span class="tag">Jira</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</article>
+
+			</div>
+		</section>
+
+		<!-- Education -->
+		<section id="education" class="section">
+			<h2 class="section__title">Education</h2>
+			<div class="timeline">
+
+				<article class="entry">
+					<div class="entry__date">2018</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Additional Master M2 — Information System and Network Security</h3>
+						<div class="entry__org">TLS-SEC — Toulouse</div>
+						<div class="tags">
+							<span class="tag">Cryptography</span><span class="tag">Assembly</span><span class="tag">Reverse Engineering</span><span class="tag">Malware</span><span class="tag">Linux Kernel</span><span class="tag">Overflow</span><span class="tag">Network Security</span>
+						</div>
+					</div>
+				</article>
+
+				<article class="entry">
+					<div class="entry__date">2015 — 2018</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Engineer Degree — Telecommunications and Networks</h3>
+						<div class="entry__org">ENSEEIHT — Toulouse</div>
+						<div class="tags">
+							<span class="tag">Java</span><span class="tag">C</span><span class="tag">Assembly</span><span class="tag">Network Protocols</span><span class="tag">Cisco</span><span class="tag">Routing Algorithms</span><span class="tag">Signal Transmission</span>
+						</div>
+					</div>
+				</article>
+
+				<article class="entry">
+					<div class="entry__date">2017</div>
+					<div class="entry__body">
+						<h3 class="entry__title">Erasmus Exchange — Big Data and Cybersecurity</h3>
+						<div class="entry__org">DCU — Dublin</div>
+						<div class="tags">
+							<span class="tag">Cryptography</span><span class="tag">Forensics</span><span class="tag">Network Security</span><span class="tag">Reverse Engineering</span><span class="tag">Big Data</span><span class="tag">Hadoop</span>
+						</div>
+					</div>
+				</article>
+
+				<article class="entry">
+					<div class="entry__date">2013 — 2015</div>
+					<div class="entry__body">
+						<h3 class="entry__title">CPGE — Physics and Engineer Sciences</h3>
+						<div class="entry__org">Michelet — Vanves</div>
+					</div>
+				</article>
+
+			</div>
+		</section>
+
+		<!-- Skills -->
+		<section id="skills" class="section">
+			<h2 class="section__title">Skills</h2>
+			<div class="skills-grid">
+				<div class="skill-card">
+					<h3>Orchestration &amp; Platform Engineering</h3>
+					<div class="tags"><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">Docker</span><span class="tag">Ansible</span><span class="tag">Python</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Infrastructure as Code</h3>
+					<div class="tags"><span class="tag">Terraform</span><span class="tag">Packer</span><span class="tag">Ansible</span><span class="tag">VMWare API</span><span class="tag">PowerShell</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>DevOps Automation</h3>
+					<div class="tags"><span class="tag">GitLab CI</span><span class="tag">Jenkins</span><span class="tag">Docker</span><span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Bash</span><span class="tag">PowerShell</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Observability &amp; Reliability</h3>
+					<div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Docker</span><span class="tag">Ansible</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Security Monitoring</h3>
+					<div class="tags"><span class="tag">Suricata</span><span class="tag">Auditd</span><span class="tag">OSSEC</span><span class="tag">Windows Security</span><span class="tag">Sysmon</span><span class="tag">SIGMA</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Big Data Processing</h3>
+					<div class="tags"><span class="tag">Elasticsearch</span><span class="tag">Kafka</span><span class="tag">KsqlDB</span><span class="tag">Apache Spark</span><span class="tag">HDFS</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Cloud Platforms</h3>
+					<div class="tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Embedded &amp; Low-Level Security</h3>
+					<div class="tags"><span class="tag">Oscilloscope</span><span class="tag">Electronics</span><span class="tag">CLKSCREW attack</span><span class="tag">Android</span></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section id="contact" class="section">
+			<h2 class="section__title">Contact</h2>
+			<div class="contact-grid">
+				<a class="contact-card" href="mailto:axel.roudaut@outlook.com">
+					<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+					<span>axel.roudaut@outlook.com</span>
+				</a>
+				<a class="contact-card" href="tel:+33629763391">
+					<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+					<span>+33 6 29 76 33 91</span>
+				</a>
+				<a class="contact-card" href="https://www.linkedin.com/in/axel-roudaut-90557473/" target="_blank" rel="noopener">
+					<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.83v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.07 0 4.82 2.68 4.82 6.16V23h-4v-6.94c0-1.66-.03-3.79-2.31-3.79-2.32 0-2.67 1.81-2.67 3.68V23h-4V8z"/></svg>
+					<span>Axel Roudaut</span>
+				</a>
+				<a class="contact-card" href="https://github.com/Alexclusive" target="_blank" rel="noopener">
+					<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.26 5.69.41.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.2.66.79.55C20.71 21.39 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+					<span>Alexclusive</span>
+				</a>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="footer">
+		<p>&copy; 2026 Axel Roudaut</p>
+	</footer>
+
+	<script src="js/main.js"></script>
+</body>
 </html>
