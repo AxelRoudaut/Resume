@@ -1,0 +1,7 @@
+{
+  "profile": "jekyll",
+  "extension": "html",
+  "indent": 2,
+  "ignore": "H006,H020,H021,H023,H031,D018,J018",
+  "exclude": "images/"
+}

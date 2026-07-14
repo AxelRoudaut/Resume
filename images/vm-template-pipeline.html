@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VM Template Pipeline</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #1b1f28;
+    color: #e8eaed;
+  }
+  .diagram-card {
+    padding: 16px;
+  }
+  .diagram-card svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="diagram-card">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 95 1990 525" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrBlue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L9 4 L0 8 Z" fill="#1E88E5"/>
+    </marker>
+    <marker id="arrOrange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L9 4 L0 8 Z" fill="#E65100"/>
+    </marker>
+    <marker id="arrTeal" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L9 4 L0 8 Z" fill="#4fd1c5"/>
+    </marker>
+  </defs>
+
+  <rect width="1990" height="640" fill="#1b1f28"/>
+
+  <!-- ================= ONLINE ZONE ================= -->
+  <rect x="35" y="115" width="865" height="375" rx="14" fill="none" stroke="#29ABE2" stroke-width="2.5"/>
+  <text x="58" y="145" font-size="14" font-weight="700" fill="#1B7FB8" letter-spacing="1">ONLINE NETWORK</text>
+
+  <!-- ISO Sources (dashed, like external inputs) -->
+  <rect x="55" y="180" width="170" height="280" rx="12" fill="none" stroke="#9E9E9E" stroke-width="2" stroke-dasharray="7 5"/>
+  <!-- Windows 10/11 -->
+  <g transform="translate(80,205)">
+    <rect x="0" y="0" width="7" height="7" fill="#00ADEF"/><rect x="9" y="0" width="7" height="7" fill="#00ADEF"/>
+    <rect x="0" y="9" width="7" height="7" fill="#00ADEF"/><rect x="9" y="9" width="7" height="7" fill="#00ADEF"/>
+  </g>
+  <text x="106" y="217" font-size="12" fill="#9aa0a8">Windows 10 / 11</text>
+  <!-- Windows Server -->
+  <g transform="translate(80,247)">
+    <rect x="0" y="0" width="7" height="7" fill="#0063B1"/><rect x="9" y="0" width="7" height="7" fill="#0063B1"/>
+    <rect x="0" y="9" width="7" height="7" fill="#0063B1"/><rect x="9" y="9" width="7" height="7" fill="#0063B1"/>
+  </g>
+  <text x="106" y="259" font-size="12" fill="#9aa0a8">Windows Server</text>
+  <!-- Debian -->
+  <g transform="translate(80,289)">
+    <path d="M13 4 A6.5 6.5 0 1 0 14 12" fill="none" stroke="#A80030" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <text x="106" y="301" font-size="12" fill="#9aa0a8">Debian</text>
+  <!-- Ubuntu -->
+  <g transform="translate(80,331)">
+    <circle cx="8" cy="8" r="6" fill="none" stroke="#E95420" stroke-width="2"/>
+    <circle cx="8" cy="1" r="2" fill="#E95420"/><circle cx="2" cy="11.5" r="2" fill="#E95420"/><circle cx="14" cy="11.5" r="2" fill="#E95420"/>
+  </g>
+  <text x="106" y="343" font-size="12" fill="#9aa0a8">Ubuntu</text>
+  <!-- RHEL -->
+  <g transform="translate(80,373)">
+    <path d="M2 10 Q8 1 14 10 Q8 13.5 2 10 Z" fill="#EE0000"/>
+    <path d="M0 11 Q8 15 16 11" fill="none" stroke="#EE0000" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="106" y="385" font-size="12" fill="#9aa0a8">RHEL</text>
+  <text x="140" y="437" font-size="14" font-weight="600" fill="#757575" text-anchor="middle">ISO Sources</text>
+
+  <!-- Packer -->
+  <rect x="280" y="235" width="160" height="190" rx="12" fill="#1b1f28" stroke="#02A8EF" stroke-width="2.5"/>
+   cx="360" cy="285" r="27" fill="#1b1f28" stroke="#02A8EF" stroke-width="2"/>
+  <g transform="translate(360,285)" fill="#02A8EF">
+    <polygon points="-10,-14 -4,-11 -4,14 -10,11"/>
+    <polygon points="1,-9 11,-4 11,6 1,3"/>
+  </g>
+  <text x="360" y="340" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">Packer</text>
+  <text x="360" y="364" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Build base VMs</text>
+  <text x="360" y="381" font-size="11.5" fill="#9aa0a8" text-anchor="middle">from ISO</text>
+
+  <!-- GitLab CI + Ansible (online) -->
+  <rect x="495" y="220" width="175" height="220" rx="12" fill="#1b1f28" stroke="#FC6D26" stroke-width="2.5"/>
+   cx="558" cy="272" r="27" fill="#1b1f28" stroke="#FC6D26" stroke-width="2"/>
+  <path d="M543 282 L549 258 L554 272 H562 L567 258 L573 282 L558 296 Z" fill="#FC6D26"/>
+  <circle cx="602" cy="272" r="15" fill="#41464e"/>
+  <text x="602" y="277.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">A</text>
+  <text x="582" y="330" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">GitLab CI + Ansible</text>
+  <text x="582" y="356" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Install apps &#183; Updates (OS, AV)</text>
+  <text x="582" y="373" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Disk cleanup &#183; SFTP export</text>
+
+  <!-- File Server (online) -->
+  <rect x="725" y="235" width="150" height="190" rx="12" fill="#1b1f28" stroke="#F9A825" stroke-width="2.5"/>
+   cx="800" cy="285" r="27" fill="#1b1f28" stroke="#F9A825" stroke-width="2"/>
+  <path d="M786 277 h9 l4 4 h15 v16 h-28 z" fill="#F9A825" rx="2"/>
+  <text x="800" y="340" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">File Server</text>
+  <text x="800" y="364" font-size="11.5" fill="#9aa0a8" text-anchor="middle">SFTP drop zone</text>
+  <text x="800" y="381" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Exported templates</text>
+
+  <!-- ================= DATA DIODE ================= -->
+  <rect x="940" y="270" width="120" height="120" rx="12" fill="#2a2116" stroke="#E65100" stroke-width="3"/>
+  <g stroke="#E65100" stroke-width="3" fill="#E65100">
+    <line x1="955" y1="315" x2="978" y2="315"/>
+    <polygon points="978,303 978,327 1002,315"/>
+    <line x1="1004" y1="301" x2="1004" y2="329"/>
+    <line x1="1004" y1="315" x2="1045" y2="315"/>
+  </g>
+  <text x="1000" y="362" font-size="14" font-weight="700" fill="#E65100" text-anchor="middle">Data Diode</text>
+
+  <!-- ================= OFFLINE ZONE ================= -->
+  <rect x="1100" y="115" width="860" height="375" rx="14" fill="none" stroke="#5B8DEF" stroke-width="2.5"/>
+  <text x="1123" y="145" font-size="14" font-weight="700" fill="#5B8DEF" letter-spacing="1">OFFLINE NETWORK (AIR-GAPPED)</text>
+
+  <!-- File Server (offline) -->
+  <rect x="1125" y="235" width="150" height="190" rx="12" fill="#1b1f28" stroke="#F9A825" stroke-width="2.5"/>
+   cx="1200" cy="285" r="27" fill="#1b1f28" stroke="#F9A825" stroke-width="2"/>
+  <path d="M1186 277 h9 l4 4 h15 v16 h-28 z" fill="#F9A825"/>
+  <text x="1200" y="340" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">File Server</text>
+  <text x="1200" y="364" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Replicated</text>
+  <text x="1200" y="381" font-size="11.5" fill="#9aa0a8" text-anchor="middle">templates</text>
+
+  <!-- vSphere Content Library -->
+  <rect x="1330" y="235" width="165" height="190" rx="12" fill="#1b1f28" stroke="#0091DA" stroke-width="2.5"/>
+   cx="1412" cy="285" r="27" fill="#1b1f28" stroke="#0091DA" stroke-width="2"/>
+  <g fill="none" stroke="#0091DA" stroke-width="2" stroke-linejoin="round">
+    <polygon points="1412,264 1426,271 1412,278 1398,271"/>
+    <polygon points="1412,274 1426,281 1412,288 1398,281"/>
+    <polygon points="1412,284 1426,291 1412,298 1398,291"/>
+  </g>
+  <text x="1412" y="340" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">vSphere Library</text>
+  <text x="1412" y="364" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Synchronized</text>
+  <text x="1412" y="381" font-size="11.5" fill="#9aa0a8" text-anchor="middle">template library</text>
+
+  <!-- GitLab CI + Ansible (offline) -->
+  <rect x="1550" y="220" width="175" height="220" rx="12" fill="#1b1f28" stroke="#FC6D26" stroke-width="2.5"/>
+   cx="1613" cy="272" r="27" fill="#1b1f28" stroke="#FC6D26" stroke-width="2"/>
+  <path d="M1598 282 L1604 258 L1609 272 H1617 L1622 258 L1628 282 L1613 296 Z" fill="#FC6D26"/>
+  <circle cx="1657" cy="272" r="15" fill="#41464e"/>
+  <text x="1657" y="277.5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">A</text>
+  <text x="1637" y="330" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">GitLab CI + Ansible</text>
+  <text x="1637" y="356" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Clone &#183; Hardware &#38; OS config</text>
+  <text x="1637" y="373" font-size="11.5" fill="#9aa0a8" text-anchor="middle">App install &#183; SSH tunnels</text>
+
+  <!-- Test Environments -->
+  <rect x="1780" y="235" width="155" height="190" rx="12" fill="#1b1f28" stroke="#4fd1c5" stroke-width="2.5"/>
+   cx="1857" cy="285" r="27" fill="#1b1f28" stroke="#4fd1c5" stroke-width="2"/>
+  <g stroke="#4fd1c5" stroke-width="2" fill="#fff">
+    <rect x="1843" y="272" width="28" height="18" rx="2"/>
+    <line x1="1857" y1="290" x2="1857" y2="297"/>
+    <line x1="1849" y1="298" x2="1865" y2="298"/>
+  </g>
+  <text x="1857" y="340" font-size="15" font-weight="700" fill="#e8eaed" text-anchor="middle">Test Environments</text>
+  <text x="1857" y="364" font-size="11.5" fill="#9aa0a8" text-anchor="middle">Campaign-ready VMs</text>
+
+  <!-- ================= LINKS ================= -->
+  <line x1="228" y1="330" x2="272" y2="330" stroke="#1E88E5" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+  <line x1="443" y1="330" x2="487" y2="330" stroke="#1E88E5" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+  <line x1="673" y1="330" x2="717" y2="330" stroke="#1E88E5" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+  <line x1="878" y1="330" x2="932" y2="330" stroke="#E65100" stroke-width="3.5" marker-end="url(#arrOrange)"/>
+  <line x1="1063" y1="330" x2="1117" y2="330" stroke="#E65100" stroke-width="3.5" marker-end="url(#arrOrange)"/>
+  <line x1="1278" y1="330" x2="1322" y2="330" stroke="#4fd1c5" stroke-width="2.5" marker-end="url(#arrTeal)"/>
+  <line x1="1498" y1="330" x2="1542" y2="330" stroke="#4fd1c5" stroke-width="2.5" marker-end="url(#arrTeal)"/>
+  <line x1="1728" y1="330" x2="1772" y2="330" stroke="#4fd1c5" stroke-width="2.5" marker-end="url(#arrTeal)"/>
+
+  <!-- ================= LEGEND ================= -->
+  <rect x="35" y="530" width="1925" height="80" rx="12" fill="#20242e" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="58" y="562" font-size="13" font-weight="700" fill="#c7cbd1" letter-spacing="1">LEGEND</text>
+
+  <rect x="160" y="558" width="30" height="20" rx="5" fill="none" stroke="#29ABE2" stroke-width="2.5"/>
+  <text x="200" y="573" font-size="12.5" fill="#c7cbd1">Online network (Internet-connected)</text>
+
+  <rect x="450" y="558" width="30" height="20" rx="5" fill="none" stroke="#5B8DEF" stroke-width="2.5"/>
+  <text x="490" y="573" font-size="12.5" fill="#c7cbd1">Offline network (air-gapped)</text>
+
+  <rect x="700" y="558" width="30" height="20" rx="5" fill="none" stroke="#9E9E9E" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="740" y="573" font-size="12.5" fill="#c7cbd1">External inputs</text>
+
+  <line x1="880" y1="568" x2="925" y2="568" stroke="#1E88E5" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+  <text x="940" y="573" font-size="12.5" fill="#c7cbd1">Build &#38; export flow</text>
+
+  <line x1="1090" y1="568" x2="1135" y2="568" stroke="#E65100" stroke-width="3.5" marker-end="url(#arrOrange)"/>
+  <text x="1150" y="573" font-size="12.5" fill="#c7cbd1">One-way diode replication</text>
+
+  <line x1="1345" y1="568" x2="1390" y2="568" stroke="#4fd1c5" stroke-width="2.5" marker-end="url(#arrTeal)"/>
+  <text x="1405" y="573" font-size="12.5" fill="#c7cbd1">Offline deployment flow</text>
+</svg>
+  </div>
+</body>
+</html>

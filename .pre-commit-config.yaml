@@ -49,3 +49,19 @@ repos:
     rev: v2.4.2
     hooks:
       - id: codespell
+
+  # Web lint (HTML via djlint, JS + CSS via Biome) — see justfile `init` for install
+  - repo: local
+    hooks:
+      - id: djlint
+        name: djlint (HTML)
+        entry: uv run djlint --lint
+        language: system
+        types: [html]
+        exclude: ^images/
+      - id: biome
+        name: biome (JS/CSS lint)
+        entry: biome lint --no-errors-on-unmatched
+        language: system
+        files: \.(js|css)$
+        exclude: ^images/

@@ -48,7 +48,7 @@
 						<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.83v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.07 0 4.82 2.68 4.82 6.16V23h-4v-6.94c0-1.66-.03-3.79-2.31-3.79-2.32 0-2.67 1.81-2.67 3.68V23h-4V8z"/></svg>
 						LinkedIn
 					</a>
-					<a class="btn btn--ghost" href="https://github.com/Alexclusive" target="_blank" rel="noopener">
+					<a class="btn btn--ghost" href="https://github.com/AxelRoudaut" target="_blank" rel="noopener">
 						<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.26 5.69.41.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.2.66.79.55C20.71 21.39 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
 						GitHub
 					</a>
@@ -106,6 +106,9 @@
 									<span class="tag-label">Infrastructure as Code</span>
 									<span class="tag">VMWare API</span><span class="tag">Packer</span><span class="tag">Ansible</span><span class="tag">Terraform</span><span class="tag">PowerShell</span>
 								</div>
+								<figure class="diagram" style="max-width: 1990px;">
+									<iframe src="images/vm-template-pipeline.html" title="VM template pipeline diagram" loading="lazy"></iframe>
+								</figure>
 							</li>
 							<li>
 								Improved software delivery efficiency through CI/CD pipeline automation.
@@ -113,6 +116,9 @@
 									<span class="tag-label">DevOps Automation</span>
 									<span class="tag">GitLab CI</span><span class="tag">Docker</span><span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Bash</span><span class="tag">PowerShell</span>
 								</div>
+								<figure class="diagram" style="max-width: 2000px;">
+									<iframe src="images/cicd-security-pipeline.html" title="CI/CD dependency packaging and security scanning pipeline diagram" loading="lazy"></iframe>
+								</figure>
 							</li>
 							<li>
 								Designed and implemented infrastructure monitoring and observability solutions.
@@ -120,6 +126,16 @@
 									<span class="tag-label">Observability &amp; Reliability</span>
 									<span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Docker</span><span class="tag">Ansible</span>
 								</div>
+							</li>
+							<li>
+								Developed a tool to get statistic forensic info about binaries.
+								<div class="tags">
+									<span class="tag-label">Binary Forensics Tooling</span>
+									<span class="tag">Python</span><span class="tag">Jupyter Notebook</span><span class="tag">MinIO</span><span class="tag">PostgreSQL</span>
+								</div>
+								<figure class="diagram" style="max-width: 1700px;">
+									<iframe src="images/binary-forensic-pipeline.html" title="Binary forensic pipeline diagram" loading="lazy"></iframe>
+								</figure>
 							</li>
 						</ul>
 					</div>
@@ -137,6 +153,9 @@
 									<span class="tag-label">Security Monitoring</span>
 									<span class="tag">Suricata</span><span class="tag">Auditd</span><span class="tag">OSSEC</span><span class="tag">Windows Security</span><span class="tag">Sysmon</span><span class="tag">SIGMA</span>
 								</div>
+								<figure class="diagram" style="max-width: 1900px;">
+									<iframe src="images/siem-architecture.html" title="SIEM architecture diagram" loading="lazy"></iframe>
+								</figure>
 							</li>
 							<li>
 								Developed and deployed real-time data processing pipelines for streaming workloads.
@@ -312,6 +331,14 @@
 	<footer class="footer">
 		<p>&copy; 2026 Axel Roudaut</p>
 	</footer>
+
+	<!-- Diagram lightbox -->
+	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged diagram" hidden>
+		<button class="lightbox__close" id="lightbox-close" aria-label="Close diagram">
+			<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+		</button>
+		<div class="lightbox__stage" id="lightbox-stage"></div>
+	</div>
 
 	<script src="js/main.js"></script>
 </body>

@@ -285,6 +285,109 @@ a {
 	color: var(--fg-muted);
 }
 
+/* Diagrams */
+.diagram {
+	position: relative;
+	margin: 0.75rem auto 0;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	overflow: hidden;
+	background: #1b1f28;
+	width: 100%;
+	cursor: zoom-in;
+}
+
+.diagram iframe {
+	display: block;
+	width: 100%;
+	height: 300px;
+	border: 0;
+	pointer-events: none;
+}
+
+/* "click to enlarge" hint badge */
+.diagram::after {
+	content: "⤢ Enlarge";
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	padding: 0.25rem 0.6rem;
+	font-size: 0.72rem;
+	font-weight: 600;
+	color: var(--fg);
+	background: rgba(15, 17, 21, 0.72);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	pointer-events: none;
+}
+
+.diagram:hover::after,
+.diagram:focus-visible::after {
+	opacity: 1;
+}
+
+.diagram:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* Lightbox */
+.lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2.5rem 1rem;
+	background: rgba(8, 9, 12, 0.88);
+	backdrop-filter: blur(4px);
+}
+
+.lightbox[hidden] {
+	display: none;
+}
+
+.lightbox__stage {
+	width: 100%;
+	max-height: 92vh;
+	overflow: auto;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.lightbox__stage iframe {
+	border: 0;
+	border-radius: var(--radius);
+	background: #1b1f28;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox__close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	color: var(--fg);
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 50%;
+	cursor: pointer;
+	transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.lightbox__close:hover {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
 /* Tags */
 .tags {
 	display: flex;
