@@ -1,4 +1,13 @@
+# Global variables
+set windows-shell := ["C:/tools/cygwinbin/bash.exe", "-uc"]
+set shell := ["/bin/bash", "-uc"]
+tmp_dir := if os_family() == "windows" { "C:/tmp" } else { "/tmp" }
+root_dir := replace(justfile_dir(), "\\", "/")
+sudo := if env('USER','not_defined') != "root" { "sudo" } else { "" }
+
 port := "8000"
+
+latex_dir := root_dir / "latex"
 
 # list available recipes
 default:
@@ -29,7 +38,54 @@ init:
     biome --version
     # git hooks (pre-commit + commit-msg)
     uv run pre-commit install --hook-type pre-commit --hook-type commit-msg
+    # verify system (APT) packages the diagram skills need (warns, never fails init)
+    just bindep-check || true
     echo "Project ready. Ensure ~/.local/bin is on your PATH, then run 'just lint'."
+
+# Enable just shell completion (generates the script and wires it into your shell rc)
+enable_just_completion:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    shell=$(basename "$SHELL")
+    completion="{{home_directory()}}/just-completion.sh"
+    rc="{{home_directory()}}/.${shell}rc"
+    just --completions "$shell" > "$completion"
+    line="source \"$completion\""
+    if [ -f "$rc" ] && grep -qF "$completion" "$rc"; then
+        echo "Completion already sourced in $rc"
+    else
+        echo "$line" >> "$rc"
+        echo "Added completion sourcing to $rc"
+    fi
+    echo "Run 'source $rc' (or open a new shell) to activate it."
+
+# print the APT packages declared in bindep.txt (space-separated)
+bindep-list:
+    @grep -vE '^\s*(#|$)' bindep.txt | awk '{print $1}' | tr '\n' ' '
+
+# verify the APT packages in bindep.txt are installed (non-fatal; prints what's missing)
+bindep-check:
+    #!/usr/bin/env bash
+    set -uo pipefail
+    if ! command -v dpkg-query >/dev/null 2>&1; then
+        echo "bindep-check: not a dpkg/APT system — skipping." >&2
+        exit 0
+    fi
+    missing=()
+    for pkg in $(just bindep-list); do
+        if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
+            printf '  \033[32m✓\033[0m %s\n' "$pkg"
+        else
+            printf '  \033[31m✗\033[0m %s\n' "$pkg"
+            missing+=("$pkg")
+        fi
+    done
+    if [ ${#missing[@]} -gt 0 ]; then
+        echo
+        echo "Missing ${#missing[@]} package(s). Install with:" >&2
+        {{ sudo  }} apt install ${missing[*]}
+    fi
+    echo "All bindep.txt packages installed."
 
 # serve the site locally at http://localhost:8000
 serve:
@@ -49,6 +105,30 @@ stop:
 # extract text from the source CV PDF (requires pypdf, see pyproject.toml)
 extract-cv:
     uv run python -c "import pypdf; r = pypdf.PdfReader('ROUDAUT_Axel_CV_EN_2026.pdf'); print('\n'.join(p.extract_text() for p in r.pages))"
+
+# build PDFs from the LaTeX sources in latex/ (all files, or `just pdf FILE.tex`)
+pdf file="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{ latex_dir }}"
+    if ! command -v latexmk >/dev/null 2>&1; then
+        echo "latexmk not found — see the 'LaTeX PDF build' section of bindep.txt." >&2
+        echo "Install with: {{ sudo }} apt install latexmk texlive-latex-extra texlive-fonts-extra texlive-pictures texlive-lang-french" >&2
+        exit 1
+    fi
+    files="{{ file }}"
+    [ -n "$files" ] || files=$(ls *.tex)
+    for f in $files; do
+        f="${f#latex/}"
+        echo "==> $f"
+        latexmk -pdf -interaction=nonstopmode -halt-on-error "$f"
+    done
+    # drop the auxiliary build files, keep the PDFs
+    latexmk -c
+
+# remove LaTeX build artifacts in latex/ (keeps the generated PDFs)
+pdf-clean:
+    cd "{{ latex_dir }}" && latexmk -c
 
 # remove local scratch files
 clean:

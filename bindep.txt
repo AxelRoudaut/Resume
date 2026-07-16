@@ -1,0 +1,37 @@
+# bindep.txt — system (APT) packages required by the diagram skills
+# installed under ~/.claude/skills (drawio / mermaid / excalidraw / plantuml).
+#
+# Format: <package> [platform:dpkg]   (bindep-compatible; one package per line)
+# Verify with: just bindep-check    Install with: sudo apt install $(just bindep-list)
+# Package names target Ubuntu 24.04+ (the t64 ABI transition — e.g. libasound2t64).
+
+# --- Remote rendering (Kroki API) — zero-install export path for every skill ---
+curl [platform:dpkg]
+
+# --- Diagram layout engine (drawio autolayout `dot`, plantuml class/component) ---
+graphviz [platform:dpkg]
+
+# --- PlantUML local fallback (Kroki avoids these; needed only for offline render) ---
+plantuml [platform:dpkg]
+default-jre [platform:dpkg]
+
+# --- Node.js CLIs: mermaid `mmdc`, `excalidraw-brute-export-cli` (via npm -g) ---
+nodejs [platform:dpkg]
+npm [platform:dpkg]
+
+# --- LaTeX PDF build (`just pdf`) — compile the CV/cover-letter sources in latex/ ---
+latexmk [platform:dpkg]
+texlive-latex-extra [platform:dpkg]
+texlive-fonts-extra [platform:dpkg]
+texlive-pictures [platform:dpkg]
+texlive-lang-french [platform:dpkg]
+
+# --- Headless browser / Electron runtime libs ---
+# drawio desktop CLI (Electron, via xvfb-run), mermaid puppeteer-chrome,
+# excalidraw playwright-firefox — the shared libs their bundled browsers need.
+xvfb [platform:dpkg]
+libgtk-3-0t64 [platform:dpkg]
+libnotify4 [platform:dpkg]
+libnss3 [platform:dpkg]
+libgbm1 [platform:dpkg]
+libasound2t64 [platform:dpkg]
