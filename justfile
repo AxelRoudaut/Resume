@@ -102,6 +102,47 @@ stop:
     pkill -f "http.server {{port}}"
     rm -f tmp/server.pid
 
+# Exports each .drawio to SVG via the draw.io desktop CLI, then wraps it in the
+# dark-theme card the site embeds via <iframe> (headless runtime libs: bindep.txt).
+# regenerate images/<name>.html diagram cards from diagrams/ (or `just diagrams FILE.drawio`)
+diagrams file="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{ root_dir }}"
+    # resolve the draw.io CLI: Homebrew/Linux 'drawio', older 'draw.io', or the
+    # Windows desktop exe reached from WSL2 via /mnt/c
+    if command -v drawio >/dev/null 2>&1; then DRAWIO=(drawio)
+    elif command -v draw.io >/dev/null 2>&1; then DRAWIO=(draw.io)
+    elif [ -f "/mnt/c/Program Files/draw.io/draw.io.exe" ]; then DRAWIO=("/mnt/c/Program Files/draw.io/draw.io.exe")
+    else
+        echo "draw.io desktop CLI not found — install it to regenerate diagrams:" >&2
+        echo "  https://github.com/jgraph/drawio-desktop/releases  (Homebrew: brew install --cask drawio)" >&2
+        exit 1
+    fi
+    # headless Linux needs a virtual X server; the Windows exe (and any real
+    # DISPLAY) does not
+    RUN=()
+    if [[ "${DRAWIO[0]}" != *.exe ]] && [ -z "${DISPLAY:-}" ] && command -v xvfb-run >/dev/null 2>&1; then
+        RUN=(xvfb-run -a --server-args="-screen 0 1600x1200x24")
+    fi
+    mkdir -p tmp
+    files="{{ file }}"
+    [ -n "$files" ] || files=$(ls diagrams/*.drawio)
+    for f in $files; do
+        f="diagrams/$(basename "$f")"
+        name="$(basename "$f" .drawio)"
+        # use the <diagram name="..."> attribute as the page <title>
+        title="$(grep -oP '(?<=<diagram name=")[^"]+' "$f" | head -1)"
+        echo "==> $name"
+        export HOME="${HOME:-/tmp}"
+        "${RUN[@]}" "${DRAWIO[@]}" -x -f svg -o "tmp/$name.svg" "$f" --no-sandbox
+        if [ -n "$title" ]; then
+            uv run python scripts/wrap_diagram.py "tmp/$name.svg" "images/$name.html" --title "$title"
+        else
+            uv run python scripts/wrap_diagram.py "tmp/$name.svg" "images/$name.html"
+        fi
+    done
+
 # extract text from the source CV PDF (requires pypdf, see pyproject.toml)
 extract-cv:
     uv run python -c "import pypdf; r = pypdf.PdfReader('ROUDAUT_Axel_CV_EN_2026.pdf'); print('\n'.join(p.extract_text() for p in r.pages))"

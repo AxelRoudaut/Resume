@@ -2,6 +2,12 @@
 
 Static personal resume site served via GitHub Pages (Jekyll, theme `jekyll-theme-cayman`).
 
+## Working style
+
+- For multi-step work, keep a visible todo list and only check off an item once
+  it has been **verified** done (test/lint/build passes, output inspected) — not
+  merely written.
+
 ## Python
 
 This project uses `uv` for all Python work (see `pyproject.toml`).
@@ -24,6 +30,11 @@ to see them all. Current recipes:
   missing packages.
 - `just serve` / `just serve-bg` / `just stop` — serve the site locally at
   http://localhost:8000 (foreground / background / stop the background server)
+- `just diagrams` — regenerate the `images/<name>.html` diagram cards from the
+  `.drawio` sources in `diagrams/` (all files, or `just diagrams FILE.drawio`).
+  Exports each source to SVG via the draw.io desktop CLI and wraps it in the
+  dark-theme card `index.html` embeds via `<iframe>`. Requires the draw.io
+  desktop CLI.
 - `just extract-cv` — extract text from the source CV PDF
 - `just clean` — remove local scratch files under `tmp/`
 - `just hooks-install` — install the pre-commit git hooks (one-time setup)
