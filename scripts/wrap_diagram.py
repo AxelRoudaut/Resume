@@ -56,6 +56,14 @@ def extract_svg(raw: str) -> str:
     # Let the responsive CSS (width:100%) drive size instead of fixed px.
     svg = re.sub(r'(<svg\b[^>]*?)\s+width="[^"]*"', r"\1", svg, count=1)
     svg = re.sub(r'(<svg\b[^>]*?)\s+height="[^"]*"', r"\1", svg, count=1)
+    # draw.io pairs every HTML label's <foreignObject> with a rasterized PNG
+    # <image> fallback inside a <switch>. Browsers render the foreignObject
+    # branch, so the PNGs are dead weight (often >80% of the file).
+    svg = re.sub(
+        r'(</foreignObject>)<image\b[^>]*?xlink:href="data:image/png;base64,[^"]*"[^>]*?/?>',
+        r"\1",
+        svg,
+    )
     return svg
 
 
