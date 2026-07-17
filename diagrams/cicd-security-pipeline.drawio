@@ -34,8 +34,8 @@
         </mxCell>
 
         <!-- ===================== ONLINE NODES ===================== -->
-        <mxCell id="buildspec" value="&lt;font color=&#39;#e8eaed&#39; style=&#39;font-size:12px&#39;&gt;&lt;b&gt;URL list&lt;/b&gt; &lt;font color=&#39;#9aa0a8&#39;&gt;direct downloads&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;APT packages&lt;/b&gt; &lt;font color=&#39;#9aa0a8&#39;&gt;Linux deps&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;MSVC packages&lt;/b&gt; &lt;font color=&#39;#9aa0a8&#39;&gt;Windows deps&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#39;#8b95a1&#39; style=&#39;font-size:12px&#39;&gt;build-spec.yaml&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#6b7480;strokeWidth=2;verticalAlign=top;align=center;spacingTop=52;" vertex="1" parent="1">
-          <mxGeometry x="55" y="158" width="175" height="210" as="geometry" />
+        <mxCell id="buildspec" value="&lt;font color=&#39;#e8eaed&#39; style=&#39;font-size:12px&#39;&gt;&lt;b&gt;URL list&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#9aa0a8&#39;&gt;direct downloads&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;APT packages&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#9aa0a8&#39;&gt;Linux deps&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;MSVC packages&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#9aa0a8&#39;&gt;Windows deps&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#39;#8b95a1&#39; style=&#39;font-size:12px&#39;&gt;build-spec.yaml&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#6b7480;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=18;spacingTop=50;" vertex="1" parent="1">
+          <mxGeometry x="55" y="158" width="175" height="235" as="geometry" />
         </mxCell>
         <mxCell id="buildspec-ic" style="shape=image;html=1;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEI5NUExIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48bGluZSB4MT0iNCIgeTE9IjYiIHgyPSIyMCIgeTI9IjYiLz48bGluZSB4MT0iNCIgeTE9IjEyIiB4Mj0iMjAiIHkyPSIxMiIvPjxsaW5lIHgxPSI0IiB5MT0iMTgiIHgyPSIxMyIgeTI9IjE4Ii8+PC9zdmc+;" vertex="1" parent="buildspec">
           <mxGeometry x="73.5" y="14" width="28" height="28" as="geometry" />
@@ -52,7 +52,7 @@
         <mxCell id="artifacts-ic" style="shape=image;html=1;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjBCNDI5IiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgOGwtOS01LTkgNXY4bDkgNSA5LTV6Ii8+PHBhdGggZD0iTTMgOGw5IDUgOS01Ii8+PGxpbmUgeDE9IjEyIiB5MT0iMTMiIHgyPSIxMiIgeTI9IjIxIi8+PC9zdmc+;" vertex="1" parent="artifacts">
           <mxGeometry x="70.5" y="16" width="34" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="vulnsrc" value="&lt;font color=&#39;#e8eaed&#39; style=&#39;font-size:12px&#39;&gt;&lt;b&gt;OSV.dev&lt;/b&gt; &lt;font color=&#39;#9aa0a8&#39;&gt;advisory DB&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Emerging Threats&lt;/b&gt; &lt;font color=&#39;#9aa0a8&#39;&gt;IDS ruleset&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Coverity&lt;/b&gt; &lt;font color=&#39;#9aa0a8&#39;&gt;SAST models&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#39;#8b95a1&#39; style=&#39;font-size:12px&#39;&gt;vuln / rule sources&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#6b7480;strokeWidth=2;verticalAlign=top;align=center;spacingTop=56;" vertex="1" parent="1">
+        <mxCell id="vulnsrc" value="&lt;font color=&#39;#e8eaed&#39; style=&#39;font-size:12px&#39;&gt;&lt;b&gt;OSV.dev&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#9aa0a8&#39;&gt;advisory DB&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Emerging Threats&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#9aa0a8&#39;&gt;IDS ruleset&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Coverity&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#9aa0a8&#39;&gt;SAST models&lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#39;#8b95a1&#39; style=&#39;font-size:12px&#39;&gt;vuln / rule sources&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#6b7480;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=18;spacingTop=52;" vertex="1" parent="1">
           <mxGeometry x="55" y="588" width="175" height="250" as="geometry" />
         </mxCell>
         <mxCell id="vulnsrc-ic" style="shape=image;html=1;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEI5NUExIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMmw4IDMuNXY1LjVjMCA1LTMuNCA4LjYtOCAxMS00LjYtMi40LTgtNi04LTExVjUuNXoiLz48L3N2Zz4=;" vertex="1" parent="vulnsrc">
@@ -121,13 +121,13 @@
         </mxCell>
 
         <!-- ===================== FLOW EDGES (blue) ===================== -->
-        <mxCell id="b1" style="endArrow=classic;html=1;rounded=1;strokeColor=#38BDF8;strokeWidth=2.4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="buildspec" target="go">
+        <mxCell id="b1" style="endArrow=classic;html=1;rounded=1;strokeColor=#38BDF8;strokeWidth=2.4;exitX=1;exitY=0.45;entryX=0;entryY=0.5;" edge="1" parent="1" source="buildspec" target="go">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="b2" style="endArrow=classic;html=1;rounded=1;strokeColor=#38BDF8;strokeWidth=2.4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="go" target="artifacts">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="b3" value="pull &#183; verify &#183; pin" style="endArrow=classic;html=1;rounded=1;strokeColor=#38BDF8;strokeWidth=2.4;fontColor=#9aa0a8;fontSize=11;labelBackgroundColor=#1b1f28;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="vulnsrc" target="dbsnap">
+        <mxCell id="b3" value="pull &#183; verify &#183; pin" style="endArrow=classic;html=1;rounded=1;strokeColor=#38BDF8;strokeWidth=2.4;fontColor=#9aa0a8;fontSize=11;labelBackgroundColor=#1b1f28;exitX=1;exitY=0.47;entryX=0;entryY=0.5;" edge="1" parent="1" source="vulnsrc" target="dbsnap">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="b4" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;jettySize=18;strokeColor=#38BDF8;strokeWidth=2.4;exitX=0.5;exitY=1;entryX=0.35;entryY=0;" edge="1" parent="1" source="artifacts" target="export">
