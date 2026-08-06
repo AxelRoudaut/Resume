@@ -53,6 +53,14 @@ repos:
   # Web lint (HTML via djlint, JS + CSS via Biome) — see justfile `init` for install
   - repo: local
     hooks:
+      # Bilingual (EN+FR) spell check for LaTeX sources. No-ops with a warning if
+      # hunspell / its dictionaries aren't installed (see bindep.txt), so it never
+      # blocks contributors who lack the optional tool. Allow-list: .hunspell-allow.txt
+      - id: hunspell-latex
+        name: hunspell (EN+FR spell check)
+        entry: scripts/spellcheck.sh
+        language: script
+        types: [tex]
       - id: djlint
         name: djlint (HTML)
         entry: uv run djlint --lint

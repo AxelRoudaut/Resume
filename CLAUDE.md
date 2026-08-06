@@ -41,6 +41,8 @@ to see them all. Current recipes:
 - `just lint` — run all pre-commit checks against every file
 - `just lint-html` — lint HTML with djlint (Jekyll profile)
 - `just lint-web` — lint JS + CSS with Biome
+- `just spell [FILE...]` — bilingual (EN+FR) spell check of the LaTeX sources
+  via hunspell; proper nouns / tech terms are whitelisted in `.hunspell-allow.txt`
 
 When adding a new recurring command to this project, add it to `justfile`
 rather than only documenting it in prose.
@@ -53,3 +55,7 @@ rather than only documenting it in prose.
 - **JS + CSS** — Biome (`biome.json`), installed as a standalone binary to
   `~/.local/bin` by `just init` (no Node required). Configured as a linter only;
   its formatter is disabled to avoid churning hand-authored CSS.
+- **Spelling** — two layers: codespell (English typos; French files skipped via
+  `[tool.codespell]` in `pyproject.toml`) and hunspell (`just spell`, bilingual
+  EN+FR over `latex/`). The hunspell pre-commit hook no-ops with a warning when
+  the optional `hunspell*` packages (`bindep.txt`) aren't installed.

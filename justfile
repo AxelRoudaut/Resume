@@ -190,3 +190,9 @@ lint-html:
 # lint JS + CSS only (Biome)
 lint-web:
     biome lint js/ css/
+
+# spell-check the LaTeX sources in English + French (hunspell; needs the
+# hunspell* packages in bindep.txt). Unknown proper nouns / tech terms go in
+# .hunspell-allow.txt. Runs all latex/**/*.tex, or `just spell FILE.tex ...`.
+spell *files:
+    scripts/spellcheck.sh {{ files }}

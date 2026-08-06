@@ -13,3 +13,9 @@ dev = [
     "djlint>=1.40.6",
     "pre-commit>=4.6.0",
 ]
+
+# codespell has no French dictionary, so it only checks English content.
+# Skip the French-language documents (FR CVs + cover letters) to avoid
+# false positives; English files (EN CVs, index.html) are still checked.
+[tool.codespell]
+skip = "*.pdf,*_FR_2026*.tex,*/Cover_Letters/*"

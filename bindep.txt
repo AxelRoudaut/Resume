@@ -26,6 +26,11 @@ texlive-fonts-extra [platform:dpkg]
 texlive-pictures [platform:dpkg]
 texlive-lang-french [platform:dpkg]
 
+# --- Bilingual spell check (`just spell`) — hunspell EN+FR over the latex/ sources ---
+hunspell [platform:dpkg]
+hunspell-en-us [platform:dpkg]
+hunspell-fr [platform:dpkg]
+
 # --- Headless browser / Electron runtime libs ---
 # drawio desktop CLI (Electron, via xvfb-run), mermaid puppeteer-chrome,
 # excalidraw playwright-firefox — the shared libs their bundled browsers need.

@@ -1,0 +1,135 @@
+%---------------------------------------------------------------------------------------------------
+% CV compatible ATS — Axel Roudaut (FR)
+%
+% Regles d'analyse automatique (Applicant Tracking Systems) :
+%   * Une seule colonne, pas de tableau/tikz/colorbox pour le contenu, pas de photo/icone.
+%   * Coordonnees dans le CORPS, jamais en en-tete/pied de page.
+%   * Titres standard ; vraies listes a puces ; texte selectionnable ; police standard.
+%   * La couleur ne sert qu'a la mise en valeur — tout le contenu reste du vrai texte.
+%---------------------------------------------------------------------------------------------------
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+
+\usepackage[a4paper,top=0.9cm,bottom=0.6cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F5C8B}
+\definecolor{ink}{HTML}{222222}
+\definecolor{muted}{HTML}{5A5A5A}
+\color{ink}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\setlist[itemize]{leftmargin=1.2em,topsep=0.5pt,itemsep=0.8pt,parsep=0pt,
+                  label=\textcolor{accent}{\small$\bullet$}}
+
+\titleformat{\section}
+  {\large\bfseries\color{accent}}{}{0pt}{\MakeUppercase}[{\color{accent}\titlerule[0.8pt]}]
+\titlespacing{\section}{0pt}{5pt}{3pt}
+
+% Une entree d'experience / formation.
+% #1 intitule  #2 organisation  #3 lieu  #4 dates
+\newcommand{\cventry}[4]{%
+  \textbf{#1}\hfill\textcolor{muted}{\small #4}\\[0.5pt]%
+  \textcolor{accent}{\itshape #2}%
+  \ifx\relax#3\relax\else\textcolor{muted}{\itshape\,--\,#3}\fi\par\vspace{1.5pt}%
+}
+
+\newcommand{\skillrow}[2]{\textbf{#1\,:}\hspace{0.35em}#2\\}
+
+\begin{document}
+
+%---------------------------------------------------------------------------------------------------
+% EN-TETE (texte brut, dans le corps)
+%---------------------------------------------------------------------------------------------------
+{\Huge\bfseries\color{accent}Axel Roudaut}\hspace{0.7em}{\large\color{ink}Ingénieur DevOps \& Data Engineer — Cybersécurité}\\[3pt]
+{\small\color{muted}%
+Montpellier, France \enspace|\enspace
+\href{mailto:axel.roudaut@outlook.com}{axel.roudaut@outlook.com} \enspace|\enspace
++33 6 29 76 33 91 \enspace|\enspace
+\href{https://www.linkedin.com/in/axel-roudaut-devops/}{linkedin.com/in/axel-roudaut-devops} \enspace|\enspace
+\href{https://axelroudaut.github.io/Resume/}{axelroudaut.github.io/Resume}}
+
+%---------------------------------------------------------------------------------------------------
+\section{Résumé}
+Ingénieur DevOps et Data Engineer spécialisé en cybersécurité, plus de 7 ans d'expérience en
+conception et exploitation d'infrastructures distribuées et sécurisées (Thales, Ministère des Armées).
+Expertise en automatisation CI/CD, orchestration de services et plateformes de traitement de données.
+Ouvert à des postes DevOps, Platform Engineering et Data Engineering à Montpellier dès septembre 2026.
+
+%---------------------------------------------------------------------------------------------------
+\section{Compétences techniques}
+\skillrow{Conteneurs \& orchestration}{Docker, Kubernetes, Helm}
+\skillrow{CI/CD \& automatisation}{GitLab CI, Jenkins, Ansible, Terraform, Packer}
+\skillrow{Infrastructure \& cloud}{Linux, Windows, VMware, OpenStack, GCP}
+\skillrow{Supervision \& observabilité}{Prometheus, Grafana, gestion des logs}
+\skillrow{Data \& streaming}{Kafka, Spark, Elasticsearch, ksqlDB, HDFS, Jupyter}
+\skillrow{Stockage \& bases de données}{PostgreSQL, MinIO, HDFS}
+\skillrow{Sécurité}{SIEM, Suricata, OSSEC, Sysmon, SIGMA, TheHive, auditd}
+\skillrow{Développement}{Python, Go, Bash, PowerShell, API REST}
+
+%---------------------------------------------------------------------------------------------------
+\vspace{-7pt}
+\section{Expériences}
+
+\cventry{Ingénieur DevOps Cybersécurité}{Thales}{Rennes, France}{02/2022 -- présent}
+\begin{itemize}
+  \item Conception et administration de plateformes d'infrastructure basées sur Kubernetes (Kubernetes, Helm, Docker, Ansible, Python).
+  \item Déploiement et maintien d'environnements Linux/Windows de simulation d'attaques (VMware API, Packer, Ansible, Terraform, PowerShell).
+  \item Exploitation d'une plateforme d'analyse multi-antivirus auto-hébergée, type VirusTotal (Python, Go, Ansible, VMware ESXi, API REST).
+  \item Automatisation des pipelines CI/CD pour optimiser les chaînes de production (GitLab CI, Docker, Python, Go, Bash, PowerShell).
+  \item Mise en place de la supervision et de l'observabilité des infrastructures (Prometheus, Grafana, Docker, Ansible).
+  \item Développement d'un outil de forensic statistique sur des binaires (Python, Jupyter, MinIO, PostgreSQL).
+\end{itemize}
+
+\cventry{Data Engineer Cyberdéfense}{Ministère des Armées}{Paris, France}{02/2019 -- 02/2022}
+\begin{itemize}
+  \item Conception et configuration d'une architecture de supervision de sécurité (SIEM) (Suricata, auditd, OSSEC, Sysmon, SIGMA).
+  \item Implémentation de pipelines de traitement de données en temps réel (Elasticsearch, Kafka, ksqlDB, Apache Spark, HDFS).
+  \item Automatisation des déploiements et de la supervision sur environnements distribués (Docker, Ansible, GitLab, Prometheus, Grafana).
+\end{itemize}
+
+\cventry{Stage -- Audit de cybersécurité matérielle}{Trusted Labs}{Meudon, France}{03/2018 -- 09/2018}
+\begin{itemize}
+  \item Attaques par canaux cachés électroniques pour des pentests de systèmes embarqués (Python, oscilloscope, électronique).
+  \item Injection de faute sur noyau Android via manipulation d'horloge (attaque CLKSCREW, Bash, Android).
+\end{itemize}
+
+\cventry{Stage -- Ingénieur d'intégration cloud}{Altair}{Antony, France}{06/2017 -- 08/2017}
+\begin{itemize}
+  \item Développement d'un connecteur Python d'intégration cloud pour applications HPC (Python, CI/CD, Jenkins, GCP).
+\end{itemize}
+
+%---------------------------------------------------------------------------------------------------
+\section{Formation}
+
+\cventry{Mastère spécialisé (M2) -- Sécurité des systèmes d'information et des réseaux}{TLS-SEC, Toulouse}{}{2018}
+\vspace{-2pt}{\small\color{muted}Cryptographie, assembleur, reverse engineering, malware, noyau Linux, dépassements de tampon, sécurité réseau.}\par\vspace{2pt}
+
+\cventry{Diplôme d'ingénieur -- Télécommunications \& Réseaux}{ENSEEIHT, Toulouse}{}{2015 -- 2018}
+\vspace{-2pt}{\small\color{muted}Java, C, assembleur, protocoles réseau, Cisco, algorithmes de routage, transmission du signal.}\par\vspace{2pt}
+
+\cventry{Échange Erasmus -- Big Data \& cybersécurité}{Dublin City University (DCU), Irlande}{}{2017}
+\vspace{-2pt}{\small\color{muted}Cryptographie, forensic, sécurité réseau, reverse engineering, Big Data (Hadoop).}\par\vspace{2pt}
+
+\cventry{Classes préparatoires (CPGE) -- Physique \& Sciences de l'Ingénieur}{Lycée Michelet, Vanves}{}{2013 -- 2015}
+
+%---------------------------------------------------------------------------------------------------
+\vspace{4pt}
+{\color{accent}\titlerule[0.8pt]}\vspace{4pt}
+\textbf{\color{accent}Langues :}\enspace Français (langue maternelle), Anglais (professionnel)%
+\hfill
+\textbf{\color{accent}Permis :}\enspace Moto (A), Voiture (B)
+
+\end{document}
