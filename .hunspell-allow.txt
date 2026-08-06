@@ -45,7 +45,14 @@ http
 https
 iac
 io
+ird
 irlande
+elk
+proxmox
+rssi
+secops
+onpremise
+duni
 jenkins
 jira
 jupyter
@@ -96,6 +103,7 @@ vmware
 www
 DevOps
 SysOps
+SecOps
 APIs
 GitLab
 PowerShell
