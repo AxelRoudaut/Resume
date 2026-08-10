@@ -151,25 +151,55 @@ extract-cv:
 pdf file="":
     #!/usr/bin/env bash
     set -euo pipefail
-    cd "{{ latex_dir }}"
     if ! command -v latexmk >/dev/null 2>&1; then
         echo "latexmk not found — see the 'LaTeX PDF build' section of bindep.txt." >&2
         echo "Install with: {{ sudo }} apt install latexmk texlive-latex-extra texlive-fonts-extra texlive-pictures texlive-lang-french" >&2
         exit 1
     fi
-    files="{{ file }}"
-    [ -n "$files" ] || files=$(ls *.tex)
-    for f in $files; do
-        f="${f#latex/}"
-        echo "==> $f"
-        latexmk -pdf -interaction=nonstopmode -halt-on-error "$f"
+    cd "{{ root_dir }}"
+    # The sources live in per-kind subdirectories (latex/CV/, latex/CV_ATS/), so
+    # collect full paths and build each one from its own directory below.
+    declare -a sources=()
+    if [ -n "{{ file }}" ]; then
+        # Quoted, not word-split: source names may contain spaces.
+        f="{{ file }}"
+        # Accept a repo-root path (latex/CV/x.tex), a latex/-relative one
+        # (CV/x.tex), or a bare file name found anywhere under latex/.
+        if [ -f "$f" ]; then
+            sources+=("$f")
+        elif [ -f "{{ latex_dir }}/$f" ]; then
+            sources+=("{{ latex_dir }}/$f")
+        else
+            match=$(find "{{ latex_dir }}" -name "$(basename "$f")" -type f | head -1)
+            if [ -z "$match" ]; then
+                echo "no such LaTeX source: $f" >&2
+                exit 1
+            fi
+            sources+=("$match")
+        fi
+    else
+        mapfile -t sources < <(find "{{ latex_dir }}" -name '*.tex' -type f | sort)
+    fi
+    for f in "${sources[@]}"; do
+        echo "==> ${f#"{{ root_dir }}"/}"
+        # Build from the source's own directory so relative \includegraphics
+        # paths (pic.jpeg) resolve and the PDF lands next to its source.
+        (
+            cd "$(dirname "$f")"
+            base="$(basename "$f")"
+            latexmk -pdf -interaction=nonstopmode -halt-on-error "$base"
+            # drop the auxiliary build files, keep the PDF
+            latexmk -c "$base"
+        )
     done
-    # drop the auxiliary build files, keep the PDFs
-    latexmk -c
 
-# remove LaTeX build artifacts in latex/ (keeps the generated PDFs)
+# remove LaTeX build artifacts under latex/ (keeps the generated PDFs)
 pdf-clean:
-    cd "{{ latex_dir }}" && latexmk -c
+    #!/usr/bin/env bash
+    set -euo pipefail
+    find "{{ latex_dir }}" -name '*.tex' -type f -print0 | while IFS= read -r -d '' f; do
+        (cd "$(dirname "$f")" && latexmk -c "$(basename "$f")")
+    done
 
 # remove local scratch files
 clean:

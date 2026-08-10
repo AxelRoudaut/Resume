@@ -33,6 +33,7 @@ sysmon
 tls
 APIs
 DevOps
+DevSecOps
 ESXi
 GitLab
 KsqlDB
