@@ -1,6 +1,11 @@
 /tmp/
 .venv/
 __pycache__/
+.ruff_cache
+
+# Cover letters are kept private, outside this repository (../Cover_Letters).
+# Ignored here so a stray copy is never published by accident.
+Cover_Letters/
 
 # LaTeX build artifacts
 *.aux
