@@ -1,0 +1,79 @@
+<mxfile host="Resume" type="device">
+  <diagram name="Windows Build Orchestration PoC" id="k8s-windows-build-poc">
+    <mxGraphModel dx="1820" dy="1030" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1820" pageHeight="1030" math="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ============ NESTED VIRTUALIZATION LAYERS ============ -->
+        <mxCell id="l1" value="1 &amp;#183; ESXi HOST &amp;#8212; physical server, VT-x / AMD-V" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9E9E9E;fontColor=#9E9E9E;strokeWidth=2.5;verticalAlign=top;align=left;fontSize=13;fontStyle=1;spacingLeft=16;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="250" y="40" width="1250" height="930" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" value="2 &amp;#183; LINUX VM &amp;#8212; Debian, /dev/kvm exposed to the guest" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#1E88E5;fontColor=#1E88E5;strokeWidth=2.5;verticalAlign=top;align=left;fontSize=13;fontStyle=1;spacingLeft=16;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="285" y="105" width="1180" height="825" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" value="3 &amp;#183; GITLAB RUNNER &amp;#8212; Docker executor, privileged kind-manager image" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FC6D26;fontColor=#FC6D26;strokeWidth=2.5;verticalAlign=top;align=left;fontSize=13;fontStyle=1;spacingLeft=16;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="320" y="175" width="1110" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" value="4 &amp;#183; KIND CLUSTER &amp;#8212; Kubernetes nodes as Docker containers" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#4fd1c5;fontColor=#4fd1c5;strokeWidth=2.5;verticalAlign=top;align=left;fontSize=13;fontStyle=1;spacingLeft=16;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="355" y="255" width="1040" height="600" as="geometry" />
+        </mxCell>
+
+        <!-- ============ KIND NODES ============ -->
+        <mxCell id="cp" value="&lt;b style=&#x27;font-size:12px;color:#e8eaed&#x27;&gt;Control-plane node&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;kube-apiserver &amp;#183; etcd&lt;br&gt;scheduler &amp;#183; controller-manager&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1b2430;strokeColor=#4fd1c5;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="395" y="310" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wk" value="&lt;b style=&#x27;font-size:12px;color:#e8eaed&#x27;&gt;Worker node&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;kubelet &amp;#183; kube-proxy&lt;br&gt;containerd&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1b2430;strokeColor=#4fd1c5;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="660" y="310" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ============ WORKLOADS ============ -->
+        <mxCell id="tsrv" value="&lt;b style=&#x27;font-size:13px;color:#e8eaed&#x27;&gt;Temporal server&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;workflow engine&lt;br&gt;ClusterIP service&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#20242e;strokeColor=#9B6BE8;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="395" y="430" width="210" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="twrk" value="&lt;b style=&#x27;font-size:13px;color:#e8eaed&#x27;&gt;Temporal worker&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;drives the build passes&lt;br&gt;one per target platform&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#20242e;strokeColor=#9B6BE8;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="635" y="430" width="210" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="kv" value="&lt;b style=&#x27;font-size:13px;color:#e8eaed&#x27;&gt;KubeVirt&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;virt-operator, virt-controller&lt;br&gt;virt-launcher pod&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#20242e;strokeColor=#9B6BE8;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="875" y="430" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ============ WINDOWS VM ============ -->
+        <mxCell id="win" value="&lt;b style=&#x27;font-size:15px;color:#e8eaed&#x27;&gt;Windows VM &amp;#8212; running on KVM&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;full Windows guest on a Linux-only cluster&lt;br&gt;&amp;#183;&lt;br&gt;native C / Rust compilation, no cross-compilation&lt;br&gt;VirtIO drivers &amp;#183; vCPU / vRAM / vDisk&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a2028;strokeColor=#E57373;strokeWidth=2.5;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="480" y="640" width="450" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="disk" value="&lt;b style=&#x27;font-size:13px;color:#e8eaed&#x27;&gt;Boot disk (PVC)&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;win.qcow2 &amp;#183; Packer + QEMU&lt;br&gt;unattended.xml install&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="430" width="250" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ============ EXTERNAL ============ -->
+        <mxCell id="ci" value="&lt;b style=&#x27;font-size:14px;color:#e8eaed&#x27;&gt;GitLab CI&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;triggers the job&lt;br&gt;&amp;#183;&lt;br&gt;whole environment rebuilt&lt;br&gt;from scratch on every run&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="30" y="420" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="kvm" value="&lt;b style=&#x27;font-size:13px;color:#e8eaed&#x27;&gt;/dev/kvm passthrough&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;VT-x / AMD-V&lt;br&gt;&amp;#8595; ESXi host&lt;br&gt;&amp;#8595; Debian VM&lt;br&gt;&amp;#8595; privileged container&lt;br&gt;&amp;#8595; kind node&lt;br&gt;&amp;#8595; virt-launcher&lt;br&gt;&amp;#8595; Windows VM&lt;br&gt;&amp;#183;&lt;br&gt;kernel modules checked to&lt;br&gt;rule out emulation fallback&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#9B6BE8;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="270" width="240" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="prod" value="&lt;b style=&#x27;font-size:13px;color:#e8eaed&#x27;&gt;Production target&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&#x27;#9aa0a8&#x27; style=&#x27;font-size:11px&#x27;&gt;RKE2 on native&lt;br&gt;Windows and Linux servers&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=7 5;fillColor=none;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="670" width="240" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- ============ EDGES ============ -->
+        <mxCell id="e-ci" style="endArrow=classic;html=1;rounded=1;strokeColor=#1E88E5;strokeWidth=2.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ci" target="l3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-kv" value="starts the VM" style="endArrow=classic;html=1;rounded=1;strokeColor=#4fd1c5;strokeWidth=2.5;fontColor=#4fd1c5;fontSize=11;labelBackgroundColor=#1b1f28;exitX=0.5;exitY=1;entryX=0.85;entryY=0;" edge="1" parent="1" source="kv" target="win">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-twrk" value="build tasks" style="endArrow=classic;html=1;rounded=1;strokeColor=#4fd1c5;strokeWidth=2.5;fontColor=#4fd1c5;fontSize=11;labelBackgroundColor=#1b1f28;exitX=0.5;exitY=1;entryX=0.35;entryY=0;" edge="1" parent="1" source="twrk" target="win">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-disk" value="boots from" style="endArrow=classic;html=1;rounded=1;strokeColor=#4fd1c5;strokeWidth=2.5;fontColor=#4fd1c5;fontSize=11;labelBackgroundColor=#1b1f28;exitX=0.5;exitY=1;entryX=1;entryY=0.3;" edge="1" parent="1" source="disk" target="win">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-prod" value="same workloads" style="endArrow=classic;html=1;rounded=1;dashed=1;dashPattern=7 5;strokeColor=#9E9E9E;strokeWidth=2;fontColor=#9aa0a8;fontSize=11;labelBackgroundColor=#1b1f28;exitX=1;exitY=0.75;entryX=0;entryY=0.5;" edge="1" parent="1" source="win" target="prod">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
