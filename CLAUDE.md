@@ -55,6 +55,11 @@ rather than only documenting it in prose.
 - **JS + CSS** — Biome (`biome.json`), installed as a standalone binary to
   `~/.local/bin` by `just init` (no Node required). Configured as a linter only;
   its formatter is disabled to avoid churning hand-authored CSS.
+- The djlint and Biome hooks invoke their tool through
+  `scripts/with-local-bin.sh`, which puts `~/.local/bin` on `PATH`. Editors
+  spawn git without the login shell's profile, so a bare `uv` / `biome` is not
+  found when committing from the IDE even though it works from a terminal.
+  Use that wrapper for any new hook that calls a tool installed by `just init`.
 - **Spelling** — two layers: codespell (English typos; French files skipped via
   `[tool.codespell]` in `pyproject.toml`) and hunspell (`just spell`, bilingual
   EN+FR over `latex/`). The hunspell pre-commit hook no-ops with a warning when

@@ -61,15 +61,18 @@ repos:
         entry: scripts/spellcheck.sh
         language: script
         types: [tex]
+      # Both wrap their tool in scripts/with-local-bin.sh: editors spawn git
+      # without the login shell's PATH, so a bare `uv` / `biome` is not found
+      # when committing from the IDE (see the script's header).
       - id: djlint
         name: djlint (HTML)
-        entry: uv run djlint --lint
-        language: system
+        entry: scripts/with-local-bin.sh uv run djlint --lint
+        language: script
         types: [html]
         exclude: ^images/
       - id: biome
         name: biome (JS/CSS lint)
-        entry: biome lint --no-errors-on-unmatched
-        language: system
+        entry: scripts/with-local-bin.sh biome lint --no-errors-on-unmatched
+        language: script
         files: \.(js|css)$
         exclude: ^images/
