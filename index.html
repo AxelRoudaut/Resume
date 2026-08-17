@@ -34,8 +34,9 @@
 				<p class="hero__location">Montpellier, France</p>
 				<p class="hero__summary">
 					7+ years designing and operating secure distributed infrastructures for organizations
-					such as Thales and the French Ministry of Defense. Experienced in CI/CD automation,
-					service orchestration, and large-scale data platform deployment. Seeking DevOps,
+					such as Thales and the French Ministry of Defense — from on-premise Kubernetes private
+					clouds to a security monitoring chain ingesting 4 TB of logs a day. Experienced in CI/CD
+					automation, service orchestration, and large-scale data platform deployment. Seeking DevOps,
 					Platform Engineering, or Data Engineering opportunities in Montpellier starting
 					September 2026.
 				</p>
@@ -107,14 +108,25 @@
 					<div class="entry__date">Feb 2022 — Now</div>
 					<div class="entry__body">
 						<h3 class="entry__title">Cybersecurity DevSecOps Engineer</h3>
-						<div class="entry__org">Thales — Rennes</div>
+						<div class="entry__org">Thales SIX GTS France — Rennes</div>
+						<p class="entry__context">
+							Design, automation and operation of the internal DevOps &amp; Cloud platforms behind the
+							entity's cybersecurity product lines: an on-premise private cloud hosting security
+							products, attack-simulation environments and data processing services for cyberdefense
+							teams. Agile Scrum on two-week sprints, GitLab workflow with code review and CI
+							validation.
+						</p>
 						<ul class="entry__bullets">
 							<li>
-								Industrialized Kubernetes cluster deployment down to a single configuration file and
-								one command, covering node VM provisioning on on-premise VMware or OpenStack,
-								prerequisite checks, cluster bootstrap, and templated application rollout.
+								<span class="bullet__title">Orchestration &amp; Platform Engineering</span>
+								Industrialized Kubernetes cluster deployment at customer sites down to a single JSON
+								meta-file (domain name, node count, certificates, application URLs) and one command:
+								node VM provisioning with Terraform on on-premise VMware or OpenStack, prerequisite
+								checks (SSH, DNS, hostnames, certificates), cluster bootstrap with Kubespray, and
+								installation of our product Helm charts templated from that same file. Orchestrated
+								in Ansible and run from GitLab CI with non-regression tests, so the install
+								reproduces identically from one customer site to the next.
 								<div class="tags">
-									<span class="tag-label">Orchestration &amp; Platform Engineering</span>
 									<span class="tag">Kubernetes</span><span class="tag">Kubespray</span><span class="tag">Terraform</span><span class="tag">OpenStack</span><span class="tag">Helm</span><span class="tag">Ansible</span><span class="tag">GitLab CI</span>
 								</div>
 								<figure class="diagram" style="max-width: 1620px;">
@@ -122,22 +134,30 @@
 								</figure>
 							</li>
 							<li>
-								Prototyped native C/Rust build orchestration on Kubernetes, running Windows pods on
-								Linux-only nodes through KVM virtualization. Benchmarked minikube, kind, k3s and k3d
-								to select the local runtime on performance, air-gapped installability and support
-								maturity.
+								<span class="bullet__title">Build Orchestration &amp; Virtualization</span>
+								Prototyped Kubernetes orchestration of native C/Rust builds on Windows and Linux
+								without cross-compilation, driven by Temporal and targeting RKE2 in production.
+								Selected the local runtime after benchmarking minikube, kind, k3s and k3d on
+								performance, air-gapped reproducibility and maturity — kind won on CI integration.
+								Windows pods run on Linux-only nodes through KubeVirt, preferred over dockur/windows
+								for performance despite a heavier setup: direct /dev/kvm access and kernel module
+								control to rule out emulation, with a golden qcow2 image built by Packer and QEMU
+								and VirtIO drivers injected via an unattended install file.
 								<div class="tags">
-									<span class="tag-label">Build Orchestration &amp; Virtualization</span>
-									<span class="tag">kind</span><span class="tag">KubeVirt</span><span class="tag">RKE2</span><span class="tag">Temporal</span><span class="tag">KVM/QEMU</span><span class="tag">Packer</span><span class="tag">Rust</span>
+									<span class="tag">kind</span><span class="tag">KubeVirt</span><span class="tag">RKE2</span><span class="tag">Temporal</span><span class="tag">KVM/QEMU</span><span class="tag">Packer</span><span class="tag">Rust</span><span class="tag">C</span><span class="tag">GitLab CI</span>
 								</div>
 								<figure class="diagram" style="max-width: 1820px;">
 									<iframe src="images/k8s-windows-build-poc.html" title="Windows build orchestration proof of concept diagram" loading="lazy"></iframe>
 								</figure>
 							</li>
 							<li>
-								Built and maintained Linux/Windows environments for offensive security scenarios.
+								<span class="bullet__title">Infrastructure as Code</span>
+								Built and maintained Linux/Windows attack-simulation environments on an on-premise
+								VMware platform: image factory industrialized with Packer, VM provisioning and
+								system configuration through Ansible roles and PowerShell scripts. Manual image
+								preparation gave way to a versioned chain, making environments disposable and
+								rebuildable identically.
 								<div class="tags">
-									<span class="tag-label">Infrastructure as Code</span>
 									<span class="tag">VMWare API</span><span class="tag">Packer</span><span class="tag">Ansible</span><span class="tag">Terraform</span><span class="tag">PowerShell</span>
 								</div>
 								<figure class="diagram" style="max-width: 1990px;">
@@ -145,9 +165,13 @@
 								</figure>
 							</li>
 							<li>
-								Operated a self-hosted multi-antivirus file scanning platform (VirusTotal-like).
+								<span class="bullet__title">Malware Analysis Platform</span>
+								Operated a self-hosted multi-antivirus file scanning platform (VirusTotal-like):
+								scanning engines isolated in virtual machines on VMware ESXi, file submission and
+								verdict retrieval through a REST API, analysis services written in Python and Go
+								then deployed by Ansible. Analysts can qualify a sensitive file without handing it
+								to an external service.
 								<div class="tags">
-									<span class="tag-label">Malware Analysis Platform</span>
 									<span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Ansible</span><span class="tag">VMWare ESXi</span><span class="tag">REST API</span>
 								</div>
 								<figure class="diagram" style="max-width: 1620px;">
@@ -155,9 +179,12 @@
 								</figure>
 							</li>
 							<li>
-								Improved software delivery efficiency through CI/CD pipeline automation.
+								<span class="bullet__title">DevOps Automation</span>
+								Automated the CI/CD pipelines driving the production chain: dependency packaging,
+								container image builds, security scanning and artifact promotion to target
+								environments, with steps tooled in Python, Go, Bash and PowerShell to cover Linux
+								and Windows components alike. Removing the manual delivery steps cut delivery time.
 								<div class="tags">
-									<span class="tag-label">DevOps Automation</span>
 									<span class="tag">GitLab CI</span><span class="tag">Docker</span><span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Bash</span><span class="tag">PowerShell</span>
 								</div>
 								<figure class="diagram" style="max-width: 2000px;">
@@ -165,21 +192,38 @@
 								</figure>
 							</li>
 							<li>
-								Designed and implemented infrastructure monitoring and observability solutions.
+								<span class="bullet__title">Observability &amp; Reliability</span>
+								Designed and implemented infrastructure monitoring and observability: system and
+								application metrics collected by Prometheus, per-service dashboards and alerting in
+								Grafana, containerized stack deployed by Ansible. Tracked service availability, node
+								CPU/memory usage and pipeline duration and failure rate, surfacing capacity
+								saturation before it reached users.
 								<div class="tags">
-									<span class="tag-label">Observability &amp; Reliability</span>
-									<span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Docker</span><span class="tag">Ansible</span>
+									<span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">SNMP</span><span class="tag">Docker</span><span class="tag">Ansible</span>
 								</div>
 							</li>
 							<li>
-								Developed a tool to get statistic forensic info about binaries.
+								<span class="bullet__title">Binary Forensics Tooling</span>
+								Developed a forensic statistics tool for binaries: mounts the filesystem of a Windows
+								or Linux disk, extracts every binary it holds to a MinIO server, computes indicators
+								over the stored executables in PostgreSQL, and exposes exploration and reporting in
+								Jupyter notebooks. Gives analysts a reproducible characterization of a binary over a
+								growing sample volume.
 								<div class="tags">
-									<span class="tag-label">Binary Forensics Tooling</span>
 									<span class="tag">Python</span><span class="tag">Jupyter Notebook</span><span class="tag">MinIO</span><span class="tag">PostgreSQL</span>
 								</div>
 								<figure class="diagram" style="max-width: 1700px;">
 									<iframe src="images/binary-forensic-pipeline.html" title="Binary forensic pipeline diagram" loading="lazy"></iframe>
 								</figure>
+							</li>
+							<li>
+								<span class="bullet__title">Secrets Management</span>
+								Centralized secrets management for the deployment playbooks: encryption with
+								ansible-vault and injection at run time through GitLab CI protected variables, so
+								that no credential is ever stored in clear text in the repositories.
+								<div class="tags">
+									<span class="tag">Ansible Vault</span><span class="tag">GitLab CI</span>
+								</div>
 							</li>
 						</ul>
 					</div>
@@ -190,11 +234,22 @@
 					<div class="entry__body">
 						<h3 class="entry__title">Cyberdefense DevSecOps &amp; Data Engineer</h3>
 						<div class="entry__org">Ministry of Defense — Paris</div>
+						<p class="entry__context">
+							Design and rollout of a security monitoring chain (SIEM) and its data processing
+							pipelines for the ministry's cyberdefense needs: incident detection on sensitive
+							information systems from the collection and correlation of heterogeneous network,
+							system and Windows logs. Agile on two-week sprints tracked in Jira.
+						</p>
 						<ul class="entry__bullets">
 							<li>
-								Architected and deployed a Security Information and Event Management (SIEM) system.
+								<span class="bullet__title">Security Monitoring</span>
+								Architected and deployed a Security Information and Event Management (SIEM) system
+								across a distributed environment: network probes and system agents feed a message
+								bus, events are normalized then indexed for the analysts. Sized and deployed the
+								collection, processing and storage components for 4 TB of logs per day. Built out
+								detection with SIGMA-format rules over Windows (Sysmon, Windows Security), system
+								(Auditd, OSSEC) and network (Suricata) collection.
 								<div class="tags">
-									<span class="tag-label">Security Monitoring</span>
 									<span class="tag">Suricata</span><span class="tag">Auditd</span><span class="tag">OSSEC</span><span class="tag">Windows Security</span><span class="tag">Sysmon</span><span class="tag">SIGMA</span>
 								</div>
 								<figure class="diagram" style="max-width: 1900px;">
@@ -202,17 +257,33 @@
 								</figure>
 							</li>
 							<li>
-								Developed and deployed real-time data processing pipelines for streaming workloads.
+								<span class="bullet__title">Big Data Processing Stack</span>
+								Developed and put into production real-time data processing pipelines for streaming
+								workloads: Kafka ingestion, continuous transformation and enrichment with KsqlDB and
+								Apache Spark, Elasticsearch indexing and HDFS archiving. Tuned throughput and
+								latency to shorten the delay between an event occurring and its availability to
+								analysts, with buffering to absorb network or hardware failures.
 								<div class="tags">
-									<span class="tag-label">Big Data Processing Stack</span>
 									<span class="tag">Elasticsearch</span><span class="tag">Kafka</span><span class="tag">KsqlDB</span><span class="tag">Apache Spark</span><span class="tag">HDFS</span>
 								</div>
 							</li>
 							<li>
-								Automated infrastructure provisioning and monitoring across distributed environments.
+								<span class="bullet__title">Infrastructure Automation &amp; Reliability</span>
+								Automated infrastructure provisioning and configuration across distributed
+								environments with Ansible and Docker, versioned in GitLab, and monitored the
+								processing chains with Prometheus and Grafana to catch collection losses and
+								pipeline breaks.
 								<div class="tags">
-									<span class="tag-label">Infrastructure Automation &amp; Reliability</span>
 									<span class="tag">Docker</span><span class="tag">Ansible</span><span class="tag">GitLab</span><span class="tag">Prometheus</span><span class="tag">Grafana</span>
+								</div>
+							</li>
+							<li>
+								<span class="bullet__title">Collaboration &amp; Documentation</span>
+								Gathered detection requirements from the SOC analysts and translated them into rules
+								and dashboards, continuously improving detection coverage; wrote the architecture
+								documentation and the operating procedures.
+								<div class="tags">
+									<span class="tag">SOC</span><span class="tag">SIGMA</span><span class="tag">Agile</span><span class="tag">Jira</span>
 								</div>
 							</li>
 						</ul>
@@ -224,18 +295,27 @@
 					<div class="entry__body">
 						<h3 class="entry__title">Internship — Hardware Cybersecurity Auditing</h3>
 						<div class="entry__org">Trusted Labs — Meudon</div>
+						<p class="entry__context">
+							Security evaluation laboratory for embedded components and smart cards, running applied
+							research on hardware attacks to assess how well embedded systems resist physical
+							attacks. V-model development cycle.
+						</p>
 						<ul class="entry__bullets">
 							<li>
-								Conducted electronic side-channel attack research on embedded systems.
+								<span class="bullet__title">Embedded Security</span>
+								Conducted electronic side-channel attacks on embedded systems as part of penetration
+								tests: trace acquisition on an oscilloscope, then signal processing and statistical
+								analysis of the measurements in Python.
 								<div class="tags">
-									<span class="tag-label">Embedded Security</span>
 									<span class="tag">Python</span><span class="tag">Oscilloscope</span><span class="tag">Electronics</span>
 								</div>
 							</li>
 							<li>
-								Performed fault injection attacks on the Android kernel via clock signal manipulation.
+								<span class="bullet__title">Low-Level System Exploitation</span>
+								Performed fault injection attacks on the Android kernel via clock signal
+								manipulation, demonstrating that the fault was exploitable from software, and
+								reported the findings as technical evaluation reports.
 								<div class="tags">
-									<span class="tag-label">Low-Level System Exploitation</span>
 									<span class="tag">CLKSCREW attack</span><span class="tag">Bash</span><span class="tag">Android</span>
 								</div>
 							</li>
@@ -248,11 +328,18 @@
 					<div class="entry__body">
 						<h3 class="entry__title">Internship — Cloud Integration Engineer</h3>
 						<div class="entry__org">Altair — Antony</div>
+						<p class="entry__context">
+							Platform for deploying high-performance computing (HPC) applications on public clouds,
+							letting compute-intensive workloads run on the main market offerings. Agile.
+						</p>
 						<ul class="entry__bullets">
 							<li>
-								Implemented a Python connector enabling cloud integration for HPC applications.
+								<span class="bullet__title">Cloud Platform Engineering</span>
+								Implemented a Python connector enabling cloud integration for HPC applications:
+								compute resource provisioning, job submission and result retrieval on AWS, Azure and
+								GCP. Integrated the connector into the automated build and test chain under Jenkins,
+								with development tracked in Jira.
 								<div class="tags">
-									<span class="tag-label">Cloud Platform Engineering</span>
 									<span class="tag">Python</span><span class="tag">CI/CD</span><span class="tag">Jenkins</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span><span class="tag">Jira</span>
 								</div>
 							</li>
@@ -318,15 +405,19 @@
 			<div class="skills-grid">
 				<div class="skill-card">
 					<h3>Orchestration &amp; Platform Engineering</h3>
-					<div class="tags"><span class="tag">Kubernetes</span><span class="tag">Kubespray</span><span class="tag">RKE2</span><span class="tag">kind</span><span class="tag">KubeVirt</span><span class="tag">Helm</span><span class="tag">Docker</span><span class="tag">Ansible</span><span class="tag">Python</span></div>
+					<div class="tags"><span class="tag">Kubernetes</span><span class="tag">Kubespray</span><span class="tag">RKE2</span><span class="tag">kind</span><span class="tag">KubeVirt</span><span class="tag">Helm</span><span class="tag">Docker</span><span class="tag">Temporal</span><span class="tag">Ansible</span><span class="tag">Python</span></div>
 				</div>
 				<div class="skill-card">
 					<h3>Infrastructure as Code</h3>
-					<div class="tags"><span class="tag">Terraform</span><span class="tag">Packer</span><span class="tag">Ansible</span><span class="tag">VMWare API</span><span class="tag">OpenStack</span><span class="tag">KVM/QEMU</span><span class="tag">PowerShell</span></div>
+					<div class="tags"><span class="tag">Terraform</span><span class="tag">Packer</span><span class="tag">Ansible</span><span class="tag">Ansible Vault</span><span class="tag">VMWare API</span><span class="tag">OpenStack</span><span class="tag">KVM/QEMU</span><span class="tag">PowerShell</span></div>
 				</div>
 				<div class="skill-card">
 					<h3>DevOps Automation</h3>
 					<div class="tags"><span class="tag">GitLab CI</span><span class="tag">Jenkins</span><span class="tag">Docker</span><span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Bash</span><span class="tag">PowerShell</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Languages</h3>
+					<div class="tags"><span class="tag">Python</span><span class="tag">Golang</span><span class="tag">Rust</span><span class="tag">C</span><span class="tag">Bash</span><span class="tag">PowerShell</span></div>
 				</div>
 				<div class="skill-card">
 					<h3>Observability &amp; Reliability</h3>
@@ -341,8 +432,16 @@
 					<div class="tags"><span class="tag">Elasticsearch</span><span class="tag">Kafka</span><span class="tag">KsqlDB</span><span class="tag">Apache Spark</span><span class="tag">HDFS</span></div>
 				</div>
 				<div class="skill-card">
+					<h3>Data &amp; Storage</h3>
+					<div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MinIO</span><span class="tag">Jupyter Notebook</span></div>
+				</div>
+				<div class="skill-card">
 					<h3>Cloud Platforms</h3>
-					<div class="tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span></div>
+					<div class="tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span><span class="tag">OpenStack</span></div>
+				</div>
+				<div class="skill-card">
+					<h3>Systems &amp; Methods</h3>
+					<div class="tags"><span class="tag">Linux (RHEL/Debian)</span><span class="tag">Windows Server</span><span class="tag">Agile Scrum</span><span class="tag">GitOps</span><span class="tag">Code review</span></div>
 				</div>
 				<div class="skill-card">
 					<h3>Embedded &amp; Low-Level Security</h3>
