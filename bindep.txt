@@ -1,5 +1,6 @@
-# bindep.txt — system (APT) packages required by the diagram skills
-# installed under ~/.claude/skills (drawio / mermaid / excalidraw / plantuml).
+# bindep.txt — system (APT) packages required by the skills installed under
+# ~/.claude/skills: the diagram ones (drawio / mermaid / excalidraw / plantuml)
+# and the document ones (pandoc / latex-document-skill).
 #
 # Format: <package> [platform:dpkg]   (bindep-compatible; one package per line)
 # Verify with: just bindep-check    Install with: sudo apt install $(just bindep-list)
@@ -25,6 +26,11 @@ texlive-latex-extra [platform:dpkg]
 texlive-fonts-extra [platform:dpkg]
 texlive-pictures [platform:dpkg]
 texlive-lang-french [platform:dpkg]
+
+# --- Document conversion (pandoc skill) — md ⇄ docx/html/pdf/latex ---
+# texlive-xetex provides the xelatex engine pandoc needs for Unicode-heavy input.
+pandoc [platform:dpkg]
+texlive-xetex [platform:dpkg]
 
 # --- Bilingual spell check (`just spell`) — hunspell EN+FR over the latex/ sources ---
 hunspell [platform:dpkg]

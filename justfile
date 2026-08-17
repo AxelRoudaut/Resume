@@ -38,8 +38,14 @@ init:
     biome --version
     # git hooks (pre-commit + commit-msg)
     uv run pre-commit install --hook-type pre-commit --hook-type commit-msg
-    # verify system (APT) packages the diagram skills need (warns, never fails init)
+    # verify the system (APT) packages the diagram + document skills need
+    # (drawio/mermaid/plantuml, LaTeX, hunspell, pandoc) — warns, never fails init
     just bindep-check || true
+    # pandoc drives the document-conversion skill; it needs root to install, so
+    # only report it here — bindep-check already prints the apt line.
+    command -v pandoc >/dev/null 2>&1 \
+        && echo "pandoc: $(pandoc --version | head -1)" \
+        || echo "pandoc: not installed (needed by the pandoc skill)"
     echo "Project ready. Ensure ~/.local/bin is on your PATH, then run 'just lint'."
 
 # Enable just shell completion (generates the script and wires it into your shell rc)
@@ -83,9 +89,10 @@ bindep-check:
     if [ ${#missing[@]} -gt 0 ]; then
         echo
         echo "Missing ${#missing[@]} package(s). Install with:" >&2
-        {{ sudo  }} apt install ${missing[*]}
+        echo "  {{ sudo }} apt install ${missing[*]}" >&2
+    else
+        echo "All bindep.txt packages installed."
     fi
-    echo "All bindep.txt packages installed."
 
 # serve the site locally at http://localhost:8000
 serve:

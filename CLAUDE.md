@@ -25,8 +25,9 @@ to see them all. Current recipes:
 - `just init` — install everything needed to work on the project (Python deps,
   Biome, git hooks). Run this first on a fresh clone. Also runs `bindep-check`.
 - `just bindep-check` / `just bindep-list` — verify (or list) the system APT
-  packages declared in `bindep.txt`, needed by the diagram skills for image
-  export. `bindep-check` is non-fatal and prints the `apt install` line for any
+  packages declared in `bindep.txt`: the diagram skills' image-export runtime,
+  the LaTeX toolchain, hunspell, and pandoc (document conversion).
+  `bindep-check` is non-fatal and prints the `apt install` line for any
   missing packages.
 - `just serve` / `just serve-bg` / `just stop` — serve the site locally at
   http://localhost:8000 (foreground / background / stop the background server)
