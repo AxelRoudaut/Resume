@@ -31,11 +31,14 @@ to see them all. Current recipes:
   missing packages.
 - `just serve` / `just serve-bg` / `just stop` — serve the site locally at
   http://localhost:8000 (foreground / background / stop the background server)
-- `just diagrams` — regenerate the `images/<name>.html` diagram cards from the
-  `.drawio` sources in `diagrams/` (all files, or `just diagrams FILE.drawio`).
+- `just diagrams` — regenerate the `diagrams/html/<name>.html` cards from the
+  `.drawio` sources in `diagrams/drawio/` (all files, or `just diagrams FILE.drawio`).
   Exports each source to SVG via the draw.io desktop CLI and wraps it in the
   dark-theme card `index.html` embeds via `<iframe>`. Requires the draw.io
   desktop CLI.
+- `just diagrams-pdf` — export the same `.drawio` sources to vector PDF under
+  `diagrams/pdf/`, for the LaTeX documents that embed them with
+  `\includegraphics`.
 - `just extract-cv` — extract text from the source CV PDF
 - `just clean` — remove local scratch files under `tmp/`
 - `just hooks-install` — install the pre-commit git hooks (one-time setup)
@@ -51,8 +54,8 @@ rather than only documenting it in prose.
 ## Linting
 
 - **Python** — ruff (via pre-commit).
-- **HTML** — djlint with the `jekyll` profile (`.djlintrc`); generated SVG
-  diagrams under `images/` are excluded.
+- **HTML** — djlint with the `jekyll` profile (`.djlintrc`); the generated
+  diagram cards under `diagrams/html/` are excluded.
 - **JS + CSS** — Biome (`biome.json`), installed as a standalone binary to
   `~/.local/bin` by `just init` (no Node required). Configured as a linter only;
   its formatter is disabled to avoid churning hand-authored CSS.

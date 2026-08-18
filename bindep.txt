@@ -8,6 +8,7 @@
 
 # --- Remote rendering (Kroki API) — zero-install export path for every skill ---
 curl [platform:dpkg]
+tree [platform:dpkg]
 
 # --- Diagram layout engine (drawio autolayout `dot`, plantuml class/component) ---
 graphviz [platform:dpkg]

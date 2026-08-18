@@ -69,10 +69,10 @@ repos:
         entry: scripts/with-local-bin.sh uv run djlint --lint
         language: script
         types: [html]
-        exclude: ^images/
+        exclude: ^diagrams/html/
       - id: biome
         name: biome (JS/CSS lint)
         entry: scripts/with-local-bin.sh biome lint --no-errors-on-unmatched
         language: script
         files: \.(js|css)$
-        exclude: ^images/
+        exclude: ^diagrams/html/

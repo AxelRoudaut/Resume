@@ -1,4 +1,4 @@
-"""Generate diagrams/k8s-windows-build-poc.drawio — nested virtualization layers."""
+"""Generate diagrams/drawio/k8s-windows-build-poc.drawio — nested virtualization layers."""
 
 from html import escape
 
@@ -346,5 +346,7 @@ o.append(
 
 o.append("      </root>\n    </mxGraphModel>\n  </diagram>\n</mxfile>\n")
 
-open("diagrams/k8s-windows-build-poc.drawio", "w", encoding="utf-8").write("".join(o))
-print("wrote diagrams/k8s-windows-build-poc.drawio")
+open("diagrams/drawio/k8s-windows-build-poc.drawio", "w", encoding="utf-8").write(
+    "".join(o)
+)
+print("wrote diagrams/drawio/k8s-windows-build-poc.drawio")

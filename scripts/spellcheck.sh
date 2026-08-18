@@ -47,7 +47,10 @@ for f in "${files[@]}"; do
     # -l: list unknown words only  -t: TeX mode (skip \commands & % comments)  -p: allow-list
     # Drop tokens containing digits — LaTeX dimensions (12cm, 0.8pt) and reference
     # codes (offer numbers) leak through TeX mode but are never dictionary words.
-    bad="$(hunspell -l -t -d "$DICTS" -p "$ALLOW" "$f" 2>/dev/null | grep -vE '[0-9]' | sort -u)"
+    # Image file names (\schema{foo-bar.pdf}, \includegraphics{...}) are paths,
+    # not prose: strip them so they don't force junk into the allow-list.
+    bad="$(sed -E 's/\\(schema|includegraphics)(\[[^]]*\])?\{[^}]*\}/ /g' "$f" \
+        | hunspell -l -t -d "$DICTS" -p "$ALLOW" 2>/dev/null | grep -vE '[0-9]' | sort -u)"
     if [ -n "$bad" ]; then
         status=1
         echo "✗ ${f#"$ROOT"/}" >&2

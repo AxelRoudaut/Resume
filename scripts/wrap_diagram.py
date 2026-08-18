@@ -1,7 +1,7 @@
 """Wrap a diagram SVG into the site's dark-theme card HTML.
 
 Reads an SVG file (exported from a .drawio / .excalidraw source) and emits a
-self-contained images/<name>.html matching the look of the hand-authored
+self-contained diagrams/html/<name>.html matching the look of the hand-authored
 diagrams — the same .diagram-card shell index.html embeds via <iframe>.
 
 Usage: uv run python scripts/wrap_diagram.py <input.svg> <output.html> [--title "..."]

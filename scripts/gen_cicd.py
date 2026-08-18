@@ -1,4 +1,4 @@
-"""Generate images/cicd-security-pipeline.html — a dark-theme SVG diagram of the
+"""Generate diagrams/html/cicd-security-pipeline.html — a dark-theme SVG diagram of the
 GitLab CI dependency-packaging + air-gap replication + security-scanning pipeline.
 
 Authored directly in the site's dark palette (css/style.css design tokens) so no
@@ -421,6 +421,6 @@ html = f"""<!DOCTYPE html>
 </html>
 """
 
-out = Path("images/cicd-security-pipeline.html")
+out = Path("diagrams/html/cicd-security-pipeline.html")
 out.write_text(html, encoding="utf-8")
 print(f"wrote {out} ({len(html)} bytes)")
