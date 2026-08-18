@@ -282,6 +282,24 @@ a {
 	font-size: 0.95rem;
 }
 
+.entry__org a {
+	color: inherit;
+	border-bottom: 1px solid var(--accent);
+	transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.entry__org a::after {
+	content: "\2197";
+	font-size: 0.8em;
+	margin-left: 0.15em;
+	vertical-align: 0.1em;
+}
+
+.entry__org a:hover {
+	color: #fff;
+	border-bottom-color: #fff;
+}
+
 .entry__context {
 	color: var(--fg);
 	font-size: 0.9rem;
