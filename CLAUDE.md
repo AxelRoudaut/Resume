@@ -51,6 +51,41 @@ to see them all. Current recipes:
 When adding a new recurring command to this project, add it to `justfile`
 rather than only documenting it in prose.
 
+## PDF creation
+
+Preferred toolchain, in order. Verified available in this environment unless
+noted.
+
+| Need | Tool | Command |
+|---|---|---|
+| Full-control document (report, CV, letter) | **LaTeX + latexmk** | `latexmk -pdf doc.tex` |
+| Charts/figures to embed | **matplotlib → vector PDF** | `uv run --with matplotlib gen.py` |
+| Diagrams to embed | **draw.io CLI → PDF** | `just diagrams-pdf` |
+| Markdown/DOCX/HTML → PDF | **pandoc** (`--pdf-engine=lualatex`) | `pandoc in.md -o out.pdf` |
+| HTML/CSS → PDF (web-styled) | **WeasyPrint** (PyPI, no system pkg) | `uv run --with weasyprint weasyprint in.html out.pdf` |
+| Inspect / preview / verify | **poppler-utils** | `pdfinfo`, `pdftoppm -png -r 110` |
+
+Rules that avoid the usual breakage:
+
+- **Always render and look at the result.** `pdftoppm -png` then read the
+  image. LaTeX compiles happily while emitting garbage: `<` and `>` in text
+  mode silently become `¡`/`¿` under T1 — write `$<$` / `$>$`.
+- **Embed figures as vector PDF, never PNG.** matplotlib's `savefig("f.pdf")`
+  keeps text selectable and scales cleanly.
+- **`latexmk` over hand-rolled multi-pass** — it resolves the pass count for
+  references, bibliography and index on its own.
+- Use `--use-latexmk` with the `latex-document-skill` compile script; it also
+  auto-detects the engine and can emit PNG previews (`--preview`).
+- For documents of 5+ pages, read that skill's
+  `references/long-form-best-practices.md` first.
+
+Engine availability (checked 2026-08-20):
+
+- `pdflatex`, `lualatex`, `latexmk`, `gs`, `pdftoppm` — installed.
+- **`xelatex` and `pandoc` are declared in `bindep.txt` but NOT installed.**
+  Run `just bindep-check` and install what it prints before relying on them.
+  Use `lualatex` as the Unicode/system-font engine in the meantime.
+
 ## Linting
 
 - **Python** — ruff (via pre-commit).
