@@ -61,7 +61,7 @@
 
 \begin{center}
   {\LARGE\bfseries\color{accent} Dossier de compétences}\\[6pt]
-  {\large Axel Roudaut --- Ingénieur DevSecOps \& Data Engineer}\\[4pt]
+  {\large Axel Roudaut --- Ingénieur DevSecOps --- Platform \& Data}\\[4pt]
   {\small Montpellier --- \href{mailto:axel.roudaut@outlook.com}{axel.roudaut@outlook.com} --- +33 6 29 76 33 91}\\[3pt]
   {\small LinkedIn : \href{https://www.linkedin.com/in/axel-roudaut-devops/}{www.linkedin.com/in/axel-roudaut-devops/}
    --- CV : \href{https://axelroudaut.github.io/Resume/}{axelroudaut.github.io/Resume/}}
@@ -72,7 +72,7 @@
 
 \section{Résumé}
 
-DevSecOps et Data Engineer dans le domaine de la cybersécurité avec \textbf{7+ ans d'expérience} dans la conception et l'exploitation d'infrastructures distribuées et sécurisées (Thales, Ministère des Armées). Spécialisé en automatisation CI/CD, orchestration de services et déploiement de plateformes de traitement de données. Ouvert à des postes DevOps, Data Engineering et Platform Engineering à \textbf{Montpellier} à partir d'\textbf{octobre 2026}.
+\textbf{Ingénieur DevSecOps avec 7+ ans d'expérience} dans la conception et l'exploitation d'infrastructures distribuées en environnements air-gap renforcés (Thales, Ministère des Armées). Spécialisé en CI/CD, plateformes Kubernetes, automatisation VMware, supervision, pipelines de traitement Kafka et indexation Elasticsearch à grande échelle, ainsi que développement d'outillage en Python ; montée en compétences sur l'infrastructure IA et l'inférence LLM. Ouvert à des postes DevOps, SRE, Platform ou Data Engineering à \textbf{Montpellier ou en full remote} dès \textbf{octobre 2026}.
 
 Références et contacts pour recommandation communiqués sur demande.
 
@@ -81,7 +81,7 @@ Références et contacts pour recommandation communiqués sur demande.
 \subsection{1. Thales --- février 2022 à aujourd'hui}
 
 \begin{itemize}
-  \item \textbf{Intitulé du poste} : Ingénieur DevSecOps en Cybersécurité
+  \item \textbf{Intitulé du poste} : Platform Engineer --- Produits de cybersécurité
   \item \textbf{Entreprise / client} : THALES SIX GTS France
   \item \textbf{Lieu} : Rennes
   \item \textbf{Secteur d'activité} : Défense
@@ -133,7 +133,7 @@ Conception, automatisation et exploitation des plateformes DevOps \& Cloud inter
 \subsection{2. Ministère des Armées --- février 2019 à février 2022}
 
 \begin{itemize}
-  \item \textbf{Intitulé du poste} : Ingénieur Data \& DevSecOps en Cyberdéfense
+  \item \textbf{Intitulé du poste} : Data \& DevOps Engineer --- Supervision de sécurité (SIEM)
   \item \textbf{Entreprise / client} : Ministère des Armées
   \item \textbf{Lieu} : Paris
   \item \textbf{Secteur d'activité} : Défense
@@ -175,6 +175,8 @@ Conception et mise en œuvre d'une chaîne de supervision de sécurité (SIEM) e
 \begin{itemize}
   \item Automatisation du provisionnement et de la configuration des infrastructures avec Ansible et Docker, versionnées sous GitLab.
   \item Supervision de l'état des chaînes de traitement (Prometheus, Grafana) pour détecter les pertes de collecte et les ruptures de pipeline.
+  \item Alerting sur indicateurs avancés, étage par étage : profondeur des files persistantes Logstash, décalage (\emph{lag}) des consommateurs Kafka, entrées/sorties réseau des nœuds ksqlDB, IO et espace disque sur Elasticsearch --- de quoi intervenir avant la saturation plutôt qu'après la perte.
+  \item Validation de bout en bout par événements de synthèse (\emph{canaries}) : un journal calibré pour déclencher une règle connue est injecté à la source, puis contrôlé en sortie (parsé, catégorisé, indexé, corrélé dans la fenêtre attendue). Un composant peut se déclarer sain pendant que la chaîne cesse de produire.
 \end{itemize}
 
 \textbf{Collaboration}
@@ -292,6 +294,34 @@ Semestre d'échange effectué en anglais.\stack{Cryptographie, Forensique, Sécu
   \item \textbf{Lieu} : Vanves
   \item \textbf{Filière} : Physique et Sciences de l'Ingénieur
 \end{itemize}
+
+\subsection{5. Formations professionnelles --- Ministère des Armées (2019 -- 2022)}
+
+\begin{itemize}
+  \item \textbf{Cadre} : formation continue, poste de Data \& DevOps Engineer
+  \item \textbf{Thèmes} : Elasticsearch, Apache Spark
+\end{itemize}
+
+\subsubsection{Contenu}
+
+Formations suivies en appui de la chaîne de supervision de sécurité (SIEM) : indexation et exploitation des données sous Elasticsearch, traitements distribués avec Apache Spark.\stack{Elasticsearch, Apache Spark}
+
+\subsection{6. Autoformation --- Infrastructure IA et inférence LLM (en cours)}
+
+\begin{itemize}
+  \item \textbf{Format} : e-learning et veille technique
+\end{itemize}
+
+\subsubsection{Contenu}
+
+Prolongement du Platform Engineering et du DevSecOps vers les plateformes d'IA générative, en s'appuyant sur une expérience d'industrialisation, de sécurisation et de supervision d'infrastructures en environnements contraints. Les thèmes travaillés couvrent le cycle de vie d'une plateforme d'inférence :
+
+\begin{itemize}
+  \item \textbf{Industrialisation} : déploiement automatisé de serveurs d'inférence LLM sur Kubernetes, allocation et partage des ressources GPU, pipelines CI/CD intégrant l'évaluation des modèles.
+  \item \textbf{Architecture et sécurité} : architectures de référence des plateformes d'IA générative, isolation réseau, gouvernance des images et des modèles, risques propres aux LLM (référentiel OWASP).
+  \item \textbf{Exploitation} : observabilité des services d'inférence (latence au premier token, débit, occupation du cache KV et des GPU) et alerting associé.
+\end{itemize}
+\stack{vLLM, Kubernetes, GPU, Inférence LLM, Quantification, Cache KV, OWASP LLM, Observabilité}
 
 \section{Langues}
 

@@ -11,6 +11,7 @@ dcu
 devops
 enseeiht
 executables
+gapped
 gcp
 github
 gitlab
@@ -23,11 +24,14 @@ jira
 jupyter
 kubernetes
 linkedin
+llm
+logstash
 ossec
 pentests
 powershell
 roudaut
 siem
+sre
 suricata
 sysmon
 tls
@@ -51,12 +55,14 @@ Kubespray
 LAAS
 LinkedIn
 MinIO
+OWASP
 OpenStack
 PowerShell
 QEMU
 Quarkslab
 RHEL
 SNMP
+SysAdmin
 TheHive
 VM
 VMWare
@@ -66,3 +72,4 @@ VirusTotal
 dockur
 ksqlDB
 minikube
+vLLM
